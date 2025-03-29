@@ -12,7 +12,7 @@ public class Main {
         Vehicle bike = new Vehicle("BIKE-123", VehicleTypeEnum.TWO_WHEELER);
         Vehicle car = new Vehicle("CAR-456", VehicleTypeEnum.FOUR_WHEELER);
 
-        // Vehicles entering
+        // Vehicles entrance
         ParkingTicket bikeTicket = parkingLot.enterVehicle(bike);
         ParkingTicket carTicket = parkingLot.enterVehicle(car);
 
