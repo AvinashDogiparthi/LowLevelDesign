@@ -1,7 +1,7 @@
 package B_DesignPatterns.F_ProxyDesignPattern;
 
-import Exception.DesignException;
-import Exception.DesignErrorEnum;
+import Z_Exception.DesignException;
+import Z_Exception.DesignErrorEnum;
 
 public class EmployeeDaoProxy implements EmployeeDao{
     EmployeeDao employeeDaoObj;

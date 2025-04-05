@@ -1,7 +1,7 @@
 package A_SOLIDPrinciples.LiskovSubstitutionPrincipleAndInterfaceSegregationPrinciple.Violation.Payment;
 
-import Exception.DesignException;
-import Exception.DesignErrorEnum;
+import Z_Exception.DesignException;
+import Z_Exception.DesignErrorEnum;
 
 public class CreditCardPayment implements Payment{
 

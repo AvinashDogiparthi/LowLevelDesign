@@ -1,4 +1,4 @@
-package Exception;
+package Z_Exception;
 
 public class DesignException extends RuntimeException{
     private DesignErrorEnum designErrorEnum;
