@@ -1,0 +1,14 @@
+Simple
+Widely used
+
+When we have to hide the system complexity from the client then we have to go with facade pattern.
+Facade is a structural pattern that hides the complexity of the system and provides an interface to the class using which the client can access the system.
+
+We should not enforce client to use Facade if he wants to use any class.
+If he wants to know about system, he can use them
+
+Real World example :
+Think of the facade is like a hotel reception
+* You can ask the front desk to book a cab, schedule a wakeup calls or get room service all from one place
+* But your not forced to do it that way, you can directly go out and book a cab yourself if you want to.
+
