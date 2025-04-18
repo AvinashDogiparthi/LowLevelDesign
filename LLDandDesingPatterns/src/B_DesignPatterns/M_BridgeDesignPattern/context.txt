@@ -1,0 +1,47 @@
+Bridge pattern de-couples an abstraction from its implementation so that the two can vary independently
+
+Real Life Example :
+
+Problem :
+
+Imagine you are designing remote's for TV :
+You have :
+* 3 types of TV's --> Sony, LG, Samsung
+* 2 types of remote --> Basic, Advanced
+
+Without bridge, you would need to create every possible combination :
+
+      BasicSonyRemote
+      AdvancedSonyRemote
+
+      BasicSamsungRemote
+      AdvancedSamsungRemote
+
+      BasicLGRemote
+      AdvancedLGRemote
+
+This is not scalable, if you add a new TV or remote, you need to create a new class for every combination.
+This leads to a class explosion and tight coupling
+
+
+Bridge Solution :
+
+Instead, you separate :
+* The Abstraction : Remote ( what you do )
+* From the Implementation : TV ( how it's done )
+
+
+And you connect then using composition ( one has reference to other )
+
+     [ Abstraction: Remote ]         [ Implementation: TV ]
+          ↑   BasicRemote    ---->       SonyTV
+          ↑   AdvancedRemote ---->       SamsungTV
+                                         LGTV
+
+
+This way :
+    You can add a new TV without touching Remote
+    You can add a new Remote without touching TV
+
+A remote can control any TV - The remote doesn't care who made the TV.
+It just knows how to talk to it via a common interface.
