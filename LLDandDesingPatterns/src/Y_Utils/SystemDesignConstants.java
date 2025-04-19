@@ -11,4 +11,6 @@ public final class SystemDesignConstants {
     public static final String AMEX_CREDIT_CARD = "AMEX Credit Card";
     public static final String PAY_PAL_PAYMENT = "Pay Pal Payment";
     public static final String PHONE_PAY_PAYMENT = "Phone Pay Payment";
+    public static final String CHENNAI = "CHENNAI";
+    public static final String BANGALORE = "BANGALORE";
 }
