@@ -13,4 +13,5 @@ public final class SystemDesignConstants {
     public static final String PHONE_PAY_PAYMENT = "Phone Pay Payment";
     public static final String CHENNAI = "CHENNAI";
     public static final String BANGALORE = "BANGALORE";
+    public static final String PUNE = "PUNE";
 }
