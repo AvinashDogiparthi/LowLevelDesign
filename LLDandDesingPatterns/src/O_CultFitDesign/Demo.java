@@ -25,7 +25,7 @@ public class Demo {
         System.out.println("---------------------Adding a new Slot--------------------------");
         // adding a slot from admin
         User snehith = new User(2,"Snehith",1213232, UserType.ADMIN);
-        Slot slot = new Slot(4,5,1);
+        Slot slot = new Slot(110,4,5,1);
         cultFit.addSlot(snehith,slot,112,WorkOutType.YOGA);
 
 
