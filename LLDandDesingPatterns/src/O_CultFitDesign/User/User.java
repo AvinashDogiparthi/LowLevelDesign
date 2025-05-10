@@ -63,7 +63,7 @@ public class User {
 
     public void notifyUserRegardingRegistration(Slot slot){
         System.out.println("User::notifyUserRegardingRegistration - User"+userId+" phone number :"+phoneNumber+" registration successful for slot"+slot);
-        System.out.println("User::notifyUserRegardingRegistration - Your registration which was in the queue went through and it was successful now");
+        System.out.println("User::notifyUserRegardingRegistration - Your registration went through and it was successful now");
     }
 
     public void notifyUserRegardingSlotCancellation(Slot slot){

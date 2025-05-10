@@ -1,5 +1,7 @@
 package O_CultFitDesign.WorkOuts;
 
+import O_CultFitDesign.Booking.Booking;
+import O_CultFitDesign.Booking.BookingTypeEnum;
 import O_CultFitDesign.Slot;
 import O_CultFitDesign.User.User;
 
@@ -43,28 +45,34 @@ public class YogaWorkOut implements WorkOut{
     }
 
     @Override
-    public void bookSlot(int slotId, User user) {
+    public boolean bookSlot(int slotId, User user) {
         Slot slot = findSlot(slotId);
+        boolean isBookingDone = false;
         if(Objects.nonNull(slot)){
-            if(slot.getCurrentCapacity() > slot.getAvailableCapacity()){
+            if(slot.getCurrentCapacity() >= slot.getAvailableCapacity()){
                 System.out.println("YogaWorkOut::bookSlot - Slot is full, adding user into queue");
                 slot.addUserInQueue(user);
             } else  {
                 slot.addRegisteredUser(user);
                 System.out.println("YogaWorkOut::bookSlot - Slot is available, registration is successful");
                 user.notifyUserRegardingRegistration(slot);
+                isBookingDone = true;
             }
         }
+        return isBookingDone;
     }
 
     @Override
-    public void cancelBooking(int slotId, User user) {
+    public void cancelBooking(int slotId, User user, int gymId) {
         Slot slot = findSlot(slotId);
         if(Objects.nonNull(slot)){
             slot.removeRegisteredUser(user);
             if(!slot.getWaitListQueue().isEmpty()){
                 User queuedUser = slot.removeUserFromQueue();
                 queuedUser.notifyUserRegardingRegistration(slot);
+                slot.addRegisteredUser(user);
+                int randomBookingId = (int) Math.random()*100;
+                user.bookingList.add(new Booking(randomBookingId,slot, BookingTypeEnum.CONFIRMED,gymId,WorkOutType.YOGA));
             }
         }
     }

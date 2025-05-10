@@ -13,9 +13,9 @@ public interface WorkOut {
 
     void displaySlots();
 
-    void bookSlot(int slotId, User user);
+    boolean bookSlot(int slotId, User user);
 
-    void cancelBooking(int slotId, User user);
+    void cancelBooking(int slotId, User user, int gymId);
 
     Slot findSlot(int startTime, int endTime);
 

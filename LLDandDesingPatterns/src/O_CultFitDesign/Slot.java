@@ -14,13 +14,14 @@ public class Slot {
     private List<User> registeredUsers;
     private Queue<User> waitListQueue;
 
-    public Slot(int startTime, int endTime, int capacity) {
+    public Slot(int id, int startTime, int endTime, int capacity) {
         this.startTime = startTime;
         this.endTime = endTime;
         this.currentCapacity = 0;
         this.availableCapacity = capacity;
         this.waitListQueue = new LinkedList<>();
         this.registeredUsers = new ArrayList<>();
+        this.slotId = id;
     }
 
     public Queue<User> getWaitListQueue() {
@@ -84,6 +85,7 @@ public class Slot {
 
         if(currentCapacity == availableCapacity){
             System.out.println("Slot::addRegisteredUser - Capacity is full, please wait or check for another slot");
+            return;
         }
 
         this.registeredUsers.add(user);
@@ -108,7 +110,15 @@ public class Slot {
     }
 
     @Override
-    public String toString(){
-        return "Slot{slotId='" + slotId + "', startTime=" + startTime + "}";
+    public String toString() {
+        return "Slot{" +
+                "slotId=" + slotId +
+                ", startTime=" + startTime +
+                ", endTime=" + endTime +
+                ", currentCapacity=" + currentCapacity +
+                ", availableCapacity=" + availableCapacity +
+                ", registeredUsers=" + registeredUsers +
+                ", waitListQueue=" + waitListQueue +
+                '}';
     }
 }
