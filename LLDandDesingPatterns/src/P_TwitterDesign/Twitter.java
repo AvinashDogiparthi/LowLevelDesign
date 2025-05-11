@@ -9,8 +9,7 @@ public class Twitter {
     private Map<Integer,User> userMap;
     private Map<Integer, Tweet> tweetMap;
 
-    // K --> TweetId, V --> TweetLikes
-    PriorityQueue<Map.Entry<Integer,Integer>> priorityQueue;
+    TreeMap<Integer,TreeMap<Integer,Tweet>> mostInteractedTweets;
 
     public static Twitter instance = null;
 
@@ -18,7 +17,7 @@ public class Twitter {
         this.userMap = new HashMap<>();
         this.tweetMap = new LinkedHashMap<>();
         // Initializing a max heap based on tweetLikes
-        this.priorityQueue = new PriorityQueue<>((a,b) -> b.getValue() - a.getValue());
+        this.mostInteractedTweets = new TreeMap<>();
     }
 
     public static synchronized Twitter getInstance(){
@@ -29,7 +28,15 @@ public class Twitter {
         return instance;
     }
 
-    public List<Tweet> getLastTenRecentPost() {
+    public List<Tweet> generateFeed(User user){
+        if(user.getFeedGenerationStrategy() == FeedGenerationStrategy.LATEST_TWEETS){
+            return getLastTenRecentPost();
+        } else {
+            return getPopularTweets();
+        }
+    }
+
+    private List<Tweet> getLastTenRecentPost() {
         List<Tweet> lastTenRecentPosts = new ArrayList<>();
         List<Integer> tweetIds = new ArrayList<>(tweetMap.keySet());
         int start = Math.max(0, tweetIds.size() - 10);
@@ -42,18 +49,11 @@ public class Twitter {
         return lastTenRecentPosts;
     }
 
-    public List<Tweet> getPopularTweets() {
-        List<Map.Entry<Integer, Tweet>> tweetEntries = new ArrayList<>(tweetMap.entrySet());
-
-        tweetEntries.sort((a, b) -> {
-            int interactionsA = a.getValue().getLikesCount() + a.getValue().getRetweetsCount() + a.getValue().getCommentsCount();
-            int interactionsB = b.getValue().getLikesCount() + b.getValue().getRetweetsCount() + b.getValue().getCommentsCount();
-            return Integer.compare(interactionsB, interactionsA);
-        });
-
+    private List<Tweet> getPopularTweets() {
         List<Tweet> popularTweets = new ArrayList<>();
-        for (Map.Entry<Integer, Tweet> entry : tweetEntries) {
-            popularTweets.add(entry.getValue());
+
+        for (Map.Entry<Integer, TreeMap<Integer, Tweet>> entry : mostInteractedTweets.descendingMap().entrySet()) {
+            popularTweets.addAll(entry.getValue().values());
         }
 
         return popularTweets;
@@ -80,30 +80,77 @@ public class Twitter {
     public void doTweet(Tweet tweet, User user){
         System.out.println("User "+user.getUserName()+" is tweeting "+tweet.getTweetId());
         this.tweetMap.put(tweet.getTweetId(), tweet);
-        user.getTweetsMap().put(tweet.getTweetId(),tweet);
+        user.addTweet(tweet);
     }
 
     public void likeTweet(User user,Tweet tweet){
+        deletePreviousInteractionEntry(tweet);
         tweet.likeTweet(user);
+        updatePopularTweetsMap(tweet);
     }
 
     public void doRetweet(User user, Tweet tweet){
+        deletePreviousInteractionEntry(tweet);
         tweet.doReTweet(user);
+        updatePopularTweetsMap(tweet);
     }
 
     public void addComment(User user, Tweet tweet,String comment){
+        deletePreviousInteractionEntry(tweet);
         tweet.doComment(user,comment);
+        updatePopularTweetsMap(tweet);
+    }
+
+    private void deletePreviousInteractionEntry(Tweet tweet) {
+        int preInteractionCount =calculateInteractionCount(tweet);
+        if(mostInteractedTweets.containsKey(preInteractionCount)){
+            TreeMap<Integer,Tweet> existingMap = mostInteractedTweets.get(preInteractionCount);
+            existingMap.remove(tweet.getTweetId());
+            mostInteractedTweets.put(preInteractionCount,existingMap);
+        }
+    }
+
+    private void updatePopularTweetsMap(Tweet tweet) {
+        int interactionCount = calculateInteractionCount(tweet);
+        if(mostInteractedTweets.containsKey(interactionCount)){
+            TreeMap<Integer,Tweet> existingMap = mostInteractedTweets.get(interactionCount);
+            existingMap.put(tweet.getTweetId(), tweet);
+            //updating the map basically
+            mostInteractedTweets.put(interactionCount,existingMap);
+        } else {
+            TreeMap<Integer,Tweet> newMap = new TreeMap<>();
+            newMap.put(tweet.getTweetId(), tweet);
+            mostInteractedTweets.put(interactionCount,newMap);
+        }
     }
 
     public void undoLikeTweet(User user, Tweet tweet){
+        deletePreviousInteractionEntry(tweet);
         tweet.unlikeTweet(user);
+        updatePopularTweetsMap(tweet);
     }
 
     public void undoReTweet(User user, Tweet tweet){
+        deletePreviousInteractionEntry(tweet);
         tweet.unDoReTweet(user);
+        updatePopularTweetsMap(tweet);
     }
 
     public void removeAllComments(User user,Tweet tweet){
+        deletePreviousInteractionEntry(tweet);
         tweet.removeAllComments(user);
+        updatePopularTweetsMap(tweet);
+    }
+
+    public int calculateInteractionCount(Tweet tweet) {
+        int totalInteractions = 0;
+
+        for (Interaction interaction : tweet.getInteractionsMap().values()) {
+            totalInteractions += interaction.getLikeStatus() ? 1 : 0;
+            totalInteractions += interaction.getRetweetFlagFlag() ? 1 : 0;
+            totalInteractions += interaction.getComments().size();
+        }
+
+        return totalInteractions;
     }
 }

@@ -81,16 +81,26 @@ public class TwitterDemo {
         twitter.addComment(user5,tweet10,"pagilinda");
         twitter.addComment(user6,tweet9,"babu lake babu");
 
-        System.out.println("---------------------------Recent Tweets Feed Generator---------------------------");
-        List<Tweet> recentTweetFeedGenerator = twitter.getLastTenRecentPost();
+        System.out.println("---------------------------Most popular tweet Feed Generator---------------------------");
+        List<Tweet> recentTweetFeedGenerator = twitter.generateFeed(user1);
         for(Tweet tweet : recentTweetFeedGenerator){
             System.out.println(tweet);
         }
 
-        System.out.println("---------------------------Most popular tweet Feed Generator---------------------------");
-        List<Tweet> mostPopularTweetFeedGenerator = twitter.getPopularTweets();
+        System.out.println("---------------------------Recent Tweets Feed Generator---------------------------");
+        user1.setFeedGenerationStrategy(FeedGenerationStrategy.LATEST_TWEETS);
+        List<Tweet> mostPopularTweetFeedGenerator = twitter.generateFeed(user1);
         for(Tweet tweet : mostPopularTweetFeedGenerator){
             System.out.println(tweet);
         }
+
+        twitter.removeAllComments(user5,tweet10);
+        twitter.removeAllComments(user6,tweet9);
+
+        twitter.undoLikeTweet(user3,tweet3);
+        twitter.undoLikeTweet(user2,tweet2);
+        twitter.undoLikeTweet(user1,tweet2);
+
+        twitter.undoReTweet(user7,tweet10);
     }
 }
