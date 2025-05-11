@@ -51,9 +51,16 @@ public class Twitter {
 
     private List<Tweet> getPopularTweets() {
         List<Tweet> popularTweets = new ArrayList<>();
+        int count = 0;
 
         for (Map.Entry<Integer, TreeMap<Integer, Tweet>> entry : mostInteractedTweets.descendingMap().entrySet()) {
-            popularTweets.addAll(entry.getValue().values());
+            for (Tweet tweet : entry.getValue().values()) {
+                if (count >= 5) {
+                    return popularTweets;
+                }
+                popularTweets.add(tweet);
+                count++;
+            }
         }
 
         return popularTweets;
@@ -106,7 +113,11 @@ public class Twitter {
         if(mostInteractedTweets.containsKey(preInteractionCount)){
             TreeMap<Integer,Tweet> existingMap = mostInteractedTweets.get(preInteractionCount);
             existingMap.remove(tweet.getTweetId());
-            mostInteractedTweets.put(preInteractionCount,existingMap);
+            if (existingMap.isEmpty()) {
+                mostInteractedTweets.remove(preInteractionCount);
+            } else {
+                mostInteractedTweets.put(preInteractionCount,existingMap);
+            }
         }
     }
 
