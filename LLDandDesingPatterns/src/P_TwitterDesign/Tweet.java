@@ -186,4 +186,16 @@ public class Tweet {
     public void setTweetContent(String tweetContent) {
         this.tweetContent = tweetContent;
     }
+
+    @Override
+    public String toString() {
+        return "Tweet{" +
+                "tweetId=" + tweetId +
+                ", tweetPostedDate=" + tweetPostedDate +
+                ", likesCount=" + likesCount +
+                ", commentsCount=" + commentsCount +
+                ", retweetsCount=" + retweetsCount +
+                ", tweetContent='" + tweetContent + '\'' +
+                '}';
+    }
 }
