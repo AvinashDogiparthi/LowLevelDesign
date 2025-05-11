@@ -102,5 +102,18 @@ public class TwitterDemo {
         twitter.undoLikeTweet(user1,tweet2);
 
         twitter.undoReTweet(user7,tweet10);
+
+        System.out.println("---------------------------Most popular tweet Feed Generator---------------------------");
+        List<Tweet> mostPopularTweetFeedGeneratorPost = twitter.generateFeed(user2);
+        for(Tweet tweet : mostPopularTweetFeedGeneratorPost){
+            System.out.println(tweet);
+        }
+
+        System.out.println("---------------------------Recent Tweets Feed Generator---------------------------");
+        user2.setFeedGenerationStrategy(FeedGenerationStrategy.LATEST_TWEETS);
+        List<Tweet> recenTweetGeneratorPost = twitter.generateFeed(user1);
+        for(Tweet tweet : recenTweetGeneratorPost){
+            System.out.println(tweet);
+        }
     }
 }
