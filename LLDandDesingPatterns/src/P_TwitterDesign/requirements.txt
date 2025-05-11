@@ -1,0 +1,32 @@
+Problem Statement:
+Design an in-memory Twitter for ~100 users and ~10,000 tweets, supporting:
+Post & delete tweets
+Follow & unfollow users
+View any user’s profile (user_id, followers, following, tweets)
+Retrieve a personalized feed, sortable by different criteria
+
+Key Discussion Points:
+
+✅ Functional Requirements
+User management: create accounts
+Tweet operations: post & delete
+Social graph: follow & unfollow
+Profile fetch: user info + tweet history
+Feed retrieval: sorted by timestamp, popularity, etc.
+
+✅ Feed Generation Logic
+4 types of feed generation :
+1) Content of user following list
+2) Most liked tweets
+3) Most tweets with comments
+4) Most tweets with re-tweets
+
+✅ Non-Functional Requirements & Trade-Offs
+
+Low latency for follow/unfollow: O(1) with hash-based sets
+Memory footprint acceptable at this scale; would shard or cache for millions of users
+
+Scalability path:
+Sharding user & tweet maps by user-ID range
+Distributed cache (e.g., Redis) for hot timelines
+Async fan-out to precompute feeds for heavy-hitter users
