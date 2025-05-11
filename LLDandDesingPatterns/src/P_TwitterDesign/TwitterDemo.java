@@ -81,8 +81,15 @@ public class TwitterDemo {
         twitter.addComment(user5,tweet10,"pagilinda");
         twitter.addComment(user6,tweet9,"babu lake babu");
 
+        System.out.println("---------------------------Recent Tweets Feed Generator---------------------------");
         List<Tweet> recentTweetFeedGenerator = twitter.getLastTenRecentPost();
         for(Tweet tweet : recentTweetFeedGenerator){
+            System.out.println(tweet);
+        }
+
+        System.out.println("---------------------------Most popular tweet Feed Generator---------------------------");
+        List<Tweet> mostPopularTweetFeedGenerator = twitter.getPopularTweets();
+        for(Tweet tweet : mostPopularTweetFeedGenerator){
             System.out.println(tweet);
         }
     }

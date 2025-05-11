@@ -42,12 +42,18 @@ public class Twitter {
         return lastTenRecentPosts;
     }
 
-    public List<Integer> getPopularTweets() {
-        List<Integer> popularTweets = new ArrayList<>();
-        PriorityQueue<Map.Entry<Integer,Integer>> temporaryQueue = new PriorityQueue<>(priorityQueue);
+    public List<Tweet> getPopularTweets() {
+        List<Map.Entry<Integer, Tweet>> tweetEntries = new ArrayList<>(tweetMap.entrySet());
 
-        while(temporaryQueue.isEmpty()){
-            popularTweets.add(temporaryQueue.poll().getKey());
+        tweetEntries.sort((a, b) -> {
+            int interactionsA = a.getValue().getLikesCount() + a.getValue().getRetweetsCount() + a.getValue().getCommentsCount();
+            int interactionsB = b.getValue().getLikesCount() + b.getValue().getRetweetsCount() + b.getValue().getCommentsCount();
+            return Integer.compare(interactionsB, interactionsA);
+        });
+
+        List<Tweet> popularTweets = new ArrayList<>();
+        for (Map.Entry<Integer, Tweet> entry : tweetEntries) {
+            popularTweets.add(entry.getValue());
         }
 
         return popularTweets;
