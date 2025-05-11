@@ -22,7 +22,11 @@ public class User {
         this.userInteractions = new HashMap<>();
         this.userFollowersList = new HashMap<>();
         this.userFollowingList = new HashMap<>();
+        // by default feed generation logic will be Popular Tweets, is user want to change it explicitly he have to update
+        this.feedGenerationStrategy = FeedGenerationStrategy.POPULAR_TWEETS;
     }
+
+
 
     public void addFollower(User user){
         this.getUserFollowersList().put(user.getUserId(),user);
