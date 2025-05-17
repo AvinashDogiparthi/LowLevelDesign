@@ -134,8 +134,8 @@ public class Swiggy {
         return restaurantService.getAllFoodItems(restaurant);
     }
 
-    public User registerNewUser(int userId, String userName){
-        User customer = customerService.createUser(userId,userName);
+    public Customer registerNewUser(int userId, String userName){
+        Customer customer = customerService.createUser(userId,userName);
         System.out.println("Swiggy::registerNewUser -- successfully registered a new user");
         return customer;
     }
@@ -180,9 +180,11 @@ public class Swiggy {
 
     private boolean validateAvailabilityOfFoodItems(Customer customer, Restaurant restaurant) {
         for(FoodItem foodItem : customer.getUserCart().retrieveItemsInCart()){
-            if(! (foodItem.getCount() >= restaurant.getAvailableFoodItems().get(foodItem.getName()).getCount())){
-                System.out.println("Swiggy::validateAvailabilityOfFoodItems ------------ WARNING ----------- count of food items in user cart are not available in restaurant : "+ restaurant.getRestaurantId());
-                return false;
+            if(foodItem.getName().equals(restaurant.getAvailableFoodItems().get(foodItem.getName()).getName())){
+                if((foodItem.getCount() >= restaurant.getAvailableFoodItems().get(foodItem.getName()).getCount())){
+                    System.out.println("Swiggy::validateAvailabilityOfFoodItems ------------ WARNING ----------- count of food items in user cart are not available in restaurant : "+ restaurant.getRestaurantId() + " for foodItem : "+foodItem.getName());
+                    return false;
+                }
             }
         }
         System.out.println("Swiggy::validateAvailabilityOfFoodItems ------------- SUCCESS ------------- all items available, you proceed further");
