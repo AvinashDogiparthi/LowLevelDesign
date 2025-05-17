@@ -1,5 +1,9 @@
 package Q_SwiggyDesign;
 
+import Q_SwiggyDesign.CouponsDecarator.BasePriceCalculator;
+import Q_SwiggyDesign.CouponsDecarator.CouponDecorator;
+import Q_SwiggyDesign.CouponsDecarator.FlatDiscountCoupon;
+import Q_SwiggyDesign.CouponsDecarator.PercentangeDiscountCoupon;
 import Q_SwiggyDesign.PaymentStrategy.CashOnDelivery;
 import Q_SwiggyDesign.PaymentStrategy.CreditCardPayment;
 import Q_SwiggyDesign.PaymentStrategy.PaymentStrategy;
@@ -8,6 +12,9 @@ import Q_SwiggyDesign.Restaurant.Restaurant;
 import Q_SwiggyDesign.User.Customer;
 import Q_SwiggyDesign.User.CustomerService;
 import Q_SwiggyDesign.User.User;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
 
@@ -59,6 +66,11 @@ public class Main {
         PaymentStrategy cashOnDelivery = new CashOnDelivery();
         PaymentStrategy creditCard = new CreditCardPayment();
         PaymentStrategy phonePay = new PhonePay();
-        swiggy.placeOrder(bangloreCity,101, customer1,cashOnDelivery);
+
+        // Create a list of coupons
+        List<CouponDecorator> coupons = new ArrayList<>();
+        coupons.add(new FlatDiscountCoupon(new BasePriceCalculator(customer1), 50)); // Flat discount of 50
+        coupons.add(new PercentangeDiscountCoupon(new BasePriceCalculator(customer1), 10)); // 10% discount
+        swiggy.placeOrder(bangloreCity,101, customer1,cashOnDelivery,coupons);
     }
 }

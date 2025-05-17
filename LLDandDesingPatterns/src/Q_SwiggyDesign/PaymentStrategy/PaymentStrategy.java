@@ -2,5 +2,5 @@ package Q_SwiggyDesign.PaymentStrategy;
 
 public interface PaymentStrategy {
 
-    void pay();
+    void pay(int totalAmountPaid);
 }

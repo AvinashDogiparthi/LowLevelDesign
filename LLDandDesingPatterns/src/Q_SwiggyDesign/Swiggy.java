@@ -1,5 +1,8 @@
 package Q_SwiggyDesign;
 
+import Q_SwiggyDesign.CouponsDecarator.BasePriceCalculator;
+import Q_SwiggyDesign.CouponsDecarator.CouponDecorator;
+import Q_SwiggyDesign.CouponsDecarator.PriceCalculator;
 import Q_SwiggyDesign.Order.Order;
 import Q_SwiggyDesign.Order.OrderStatusEnum;
 import Q_SwiggyDesign.PaymentStrategy.PaymentStrategy;
@@ -145,7 +148,7 @@ public class Swiggy {
         System.out.println("Swiggy::addItemsToUserCart -- adding food items to user cart");
     }
 
-    public void placeOrder(String cityName, int restaurantId, Customer customer, PaymentStrategy paymentStrategy){
+    public void placeOrder(String cityName, int restaurantId, Customer customer, PaymentStrategy paymentStrategy, List<CouponDecorator> coupons){
         Restaurant restaurant = cityVsRestuarantMap.get(cityName).get(restaurantId);
         if(Objects.nonNull(restaurant)){
             System.out.println("Swiggy::placeOrder -- restaurant is available, moving further for next level processing");
@@ -157,7 +160,18 @@ public class Swiggy {
                     restaurant.getAvailableFoodItems().get(foodItem.getName()).setCount(restaurantFoodItem.getCount() - foodItem.getCount());
                 }
 
-                paymentStrategy.pay();
+                BasePriceCalculator basePriceCalculator = new BasePriceCalculator(customer);
+
+                PriceCalculator finalPriceCalculator = basePriceCalculator;
+
+                for (CouponDecorator coupon : coupons) {
+                    coupon.setPriceCalculator(finalPriceCalculator);
+                    finalPriceCalculator = coupon;
+                }
+
+                int totalPrice = finalPriceCalculator.calculatePrice();
+
+                paymentStrategy.pay(totalPrice);
 
                 int orderId = new Random().nextInt(1_000_000);
                 Order order = new Order(orderId, paymentStrategy, OrderStatusEnum.ON_THE_WAY,customer);
