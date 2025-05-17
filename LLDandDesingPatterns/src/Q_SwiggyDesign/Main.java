@@ -1,6 +1,13 @@
 package Q_SwiggyDesign;
 
+import Q_SwiggyDesign.PaymentStrategy.CashOnDelivery;
+import Q_SwiggyDesign.PaymentStrategy.CreditCardPayment;
+import Q_SwiggyDesign.PaymentStrategy.PaymentStrategy;
+import Q_SwiggyDesign.PaymentStrategy.PhonePay;
 import Q_SwiggyDesign.Restaurant.Restaurant;
+import Q_SwiggyDesign.User.Customer;
+import Q_SwiggyDesign.User.CustomerService;
+import Q_SwiggyDesign.User.User;
 
 public class Main {
 
@@ -42,5 +49,16 @@ public class Main {
 
         // retrieve menu
         swiggy.getAvailableItems(bangloreCity,101);
+
+        Customer customer1 = swiggy.registerNewUser(1,"Avinash");
+        swiggy.addItemsToUserCart(foodItem3,1);
+        swiggy.addItemsToUserCart(foodItem3,1);
+        swiggy.addItemsToUserCart(foodItem3,1);
+        swiggy.addItemsToUserCart(foodItem3,1);
+
+        PaymentStrategy cashOnDelivery = new CashOnDelivery();
+        PaymentStrategy creditCard = new CreditCardPayment();
+        PaymentStrategy phonePay = new PhonePay();
+        swiggy.placeOrder(bangloreCity,101, customer1,cashOnDelivery);
     }
 }

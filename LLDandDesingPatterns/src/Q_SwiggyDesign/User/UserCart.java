@@ -3,12 +3,17 @@ package Q_SwiggyDesign.User;
 import Q_SwiggyDesign.FoodItem;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class UserCart {
 
     private Map<String, FoodItem> foodItemMap;
+
+    UserCart(){
+        this.foodItemMap = new HashMap<>();
+    }
 
     public void addItem(FoodItem foodItem){
         foodItemMap.put(foodItem.getName(),foodItem);

@@ -3,12 +3,17 @@ package Q_SwiggyDesign.User;
 import Q_SwiggyDesign.FoodItem;
 import Q_SwiggyDesign.Order.Order;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
 public class CustomerService {
 
     Map<Integer, Customer> registeredCustomers;
+
+    public CustomerService(){
+        this.registeredCustomers = new HashMap<>();
+    }
 
     public Customer createUser(int userId, String userName){
         Customer customer = new Customer(userId,userName);
