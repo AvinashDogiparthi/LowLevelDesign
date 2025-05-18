@@ -1,9 +1,0 @@
-Requirements :
-
-1) User differentiation should be there.
-    ADMIN : Register GYM, Add workouts, Add slots, CANCEL slots and he can book slots
-    CUSTOMER : Can book slots and can cancel bookings
-
-2) Waitlistqueue is provided for customers, user will get notified and automatic booking will happen if solts are available
-
-3) Display availability of slots
