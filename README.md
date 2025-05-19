@@ -33,6 +33,7 @@ This folder contains comprehensive implementations of various design patterns.
 
 ### **2. System Design Implementations**
 - [C_ParkingLotDesign](#c_parkinglotdesign) - Parking lot management system.
+- [CA_ProducerConsumerDesign](#ca_producerconsumerdesign) - Basic producer consumer design implemented through multithreading.
 - [D_TicTacToeLLD](#d_tictactoelld) - Low-level design of the Tic Tac Toe game.
 - [E_CarRentalSystem](#e_carrentalsystem) - Design of a car rental management system.
 - [F_SnakeAndLadder](#f_snakeandladder) - Low-level design of the Snake and Ladder game.
