@@ -11,8 +11,6 @@ import Q_SwiggyDesign.Restaurant.RestaurantService;
 import Q_SwiggyDesign.User.Customer;
 import Q_SwiggyDesign.User.CustomerService;
 import Q_SwiggyDesign.User.DeliveryBoy;
-import Q_SwiggyDesign.User.User;
-
 import java.util.*;
 
 public class Swiggy {
