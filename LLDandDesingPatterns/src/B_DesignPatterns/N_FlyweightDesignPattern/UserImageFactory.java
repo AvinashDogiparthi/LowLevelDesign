@@ -1,8 +1,6 @@
 package B_DesignPatterns.N_FlyweightDesignPattern;
 
 
-import N_ZeptoStoreDesign.User;
-
 import java.util.HashMap;
 import java.util.Map;
 

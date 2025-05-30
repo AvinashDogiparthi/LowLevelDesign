@@ -1,7 +1,5 @@
 package B_DesignPatterns.N_FlyweightDesignPattern;
 
-import java.util.Map;
-
 public class UserImage {
     public String userImageAddress;
     public String userURL;
