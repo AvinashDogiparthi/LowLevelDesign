@@ -1,8 +1,8 @@
 package R_IssueResolvingSystem.Agent;
 
+import R_IssueResolvingSystem.AgentStrategy.AgentStrategyFactory;
 import R_IssueResolvingSystem.AgentStrategy.AgentStrategy;
 import R_IssueResolvingSystem.AgentStrategy.AgentStrategyEnum;
-import R_IssueResolvingSystem.AgentStrategy.AgentWithImmediateResponse;
 import R_IssueResolvingSystem.Issue.Issue;
 
 import java.util.HashMap;
@@ -19,7 +19,7 @@ public class AgentController {
     }
 
     public void assignAnAgent(Issue issue, AgentStrategyEnum agentStrategyEnum){
-        agentStrategy = AgentFactory.getStrategy(agentStrategyEnum);
+        agentStrategy = AgentStrategyFactory.getStrategy(agentStrategyEnum);
         System.out.println("AgentController::assignAnAgent ----- Following agent strategy : "+agentStrategyEnum.toString());
 
         Agent agent = agentStrategy.assignAnAgent(availableAgents);
