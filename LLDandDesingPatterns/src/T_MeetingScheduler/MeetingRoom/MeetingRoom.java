@@ -66,4 +66,34 @@ public class MeetingRoom {
             System.out.println("MeetingRoom::removeMeetingSlot --- no meeting slot exist in this date");
         }
     }
+
+    public boolean checkIfSlotExists(String date,int meetingSLotID){
+        boolean existence = false;
+        if(meetingSlots.containsKey(date)){
+            Map<Integer,MeetingSlot> meetingSlotMap = meetingSlots.get(date);
+
+            for(MeetingSlot meetingSlot : meetingSlotMap.values()){
+                if(meetingSlot.getMeetingSlotID() == meetingSLotID){
+                    existence = true;
+                }
+            }
+        }
+
+        return existence;
+    }
+
+    public MeetingSlot returnMeetingSlot(String date,int meetingSLotID){
+        MeetingSlot returnablemeetingSlot;
+        if(meetingSlots.containsKey(date)){
+            Map<Integer,MeetingSlot> meetingSlotMap = meetingSlots.get(date);
+
+            for(MeetingSlot meetingSlot : meetingSlotMap.values()){
+                if(meetingSlot.getMeetingSlotID() == meetingSLotID){
+                    returnablemeetingSlot = meetingSlot;
+                }
+            }
+        }
+
+        return returnablemeetingSlot;
+    }
 }
