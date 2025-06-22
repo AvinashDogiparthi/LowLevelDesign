@@ -2,6 +2,9 @@ package T_MeetingScheduler.MeetingRoom;
 
 import T_MeetingScheduler.User;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MeetingSlot {
 
     private Integer meetingSlotID;
@@ -9,12 +12,14 @@ public class MeetingSlot {
     private Integer toTime;
     private User meetingSlotManager;
     private boolean isOccupied;
+    private List<User> meetingParticipants;
 
     public MeetingSlot(int fromTime, int meetingSlotID) {
         this.meetingSlotID = meetingSlotID;
         this.fromTime = fromTime;
         this.toTime = fromTime + 1;
-        this.isOccupied = isOccupied;
+        this.isOccupied = false;
+        meetingParticipants = new ArrayList<>();
     }
 
     public int getFromTime() {
@@ -55,5 +60,17 @@ public class MeetingSlot {
 
     public void setMeetingSlotID(Integer meetingSlotID) {
         this.meetingSlotID = meetingSlotID;
+    }
+
+
+
+    public void bookMeetingSlot(User slotManger,List<User> userIDs){
+        this.meetingSlotManager = slotManger;
+        this.meetingParticipants = userIDs;
+        this.isOccupied = true;
+    }
+
+    public void addParticipant(User user){
+        this.meetingParticipants.add(user);
     }
 }
