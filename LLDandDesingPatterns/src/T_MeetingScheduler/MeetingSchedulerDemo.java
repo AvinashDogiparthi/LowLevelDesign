@@ -1,7 +1,9 @@
 package T_MeetingScheduler;
 
+import T_MeetingScheduler.MeetingRoom.MeetingSlot;
 import T_MeetingScheduler.NotificationStrategy.NotificationStrategyEnum;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class MeetingSchedulerDemo {
@@ -20,6 +22,10 @@ public class MeetingSchedulerDemo {
         List<Integer> availableSlotsInNewMeetingRoom = meetingScheduler.getAvailableMeetingSlots(121312, "23/6/25");
 
         System.out.println("Available meeting slots : "+ availableSlotsInNewMeetingRoom.size());
+        MeetingSlot meetingSlot = meetingScheduler.getMeetingSlotUsingFromTime("23/6/25",121312,1);
 
+        if(!meetingSlot.isOccupied() && availableSlotsInNewMeetingRoom.contains(meetingSlot.getMeetingSlotID())){
+            meetingScheduler.bookASlotInMeetingRoom(avinash, Arrays.asList(deepak,vamshi,preetham),"23/6/25",1,meetingSlot.getMeetingSlotID(),121312);
+        }
     }
 }

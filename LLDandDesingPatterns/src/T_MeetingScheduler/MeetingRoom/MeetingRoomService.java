@@ -75,13 +75,15 @@ public class MeetingRoomService {
         }
     }
 
-    public void bookASlotInMeetingRoom(User meetingManger, List<User> participantsList, String date, int fromTime, int meetingSlotID, int meetingRoomID){
+    public boolean bookASlotInMeetingRoom(User meetingManger, List<User> participantsList, String date, int fromTime, int meetingSlotID, int meetingRoomID){
+        boolean bookingDone = false;
         if(mapOfMeetingRooms.containsKey(meetingRoomID)){
             MeetingRoom meetingRoom = mapOfMeetingRooms.get(meetingRoomID);
             if(meetingRoom.checkIfSlotExists(date,meetingSlotID)){
                 MeetingSlot meetingSlot = meetingRoom.returnMeetingSlot(date,meetingSlotID);
                 if(!meetingSlot.isOccupied()){
                     meetingSlot.bookMeetingSlot(meetingManger,participantsList);
+                    bookingDone = true;
                 } else {
                     System.out.println("MeetingRoomService::bookASlotInMeetingRoom --- meeting slot is not available");
                 }
@@ -91,6 +93,8 @@ public class MeetingRoomService {
         } else {
             System.out.println("MeetingRoomService::bookASlotInMeetingRoom --- no meeting room exist with the sent room ID");
         }
+
+        return bookingDone;
     }
 
     public void addMeetingSlotsForSpecifiedDate(String date, int meetingRoomID){
@@ -116,5 +120,17 @@ public class MeetingRoomService {
         }
 
         return availableMeetingSlots;
+    }
+
+    public MeetingSlot getMeetingSlotusingFromTime(String date, int meetingRoomID, int fromTime){
+        MeetingSlot meetingSlot = null;
+        if(mapOfMeetingRooms.containsKey(meetingRoomID)){
+            MeetingRoom meetingRoom = mapOfMeetingRooms.get(meetingRoomID);
+            meetingSlot = meetingRoom.getMeetingSlotUsingFromTime(date,fromTime);
+        } else {
+            System.out.println("MeetingRoomService::getMeetingSlotusingFromTime --- NO MEETING ROOM exist");
+        }
+
+        return meetingSlot;
     }
 }
