@@ -1,9 +1,6 @@
 package T_MeetingScheduler.MeetingRoom;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class MeetingRoom {
 
@@ -37,12 +34,13 @@ public class MeetingRoom {
                 System.out.println("MeetingRoom::addMeetingSlot --- Created the slot");
             }
         } else {
-            System.out.println("MeetingRoom::addMeetingSlot --- no meeting room exist with specified date");
+            System.out.println("MeetingRoom::addMeetingSlot --- no meeting slots exist with specified date");
             MeetingSlot meetingSlot = new MeetingSlot(fromTime,meetingSlotID);
             Map<Integer,MeetingSlot> meetingSlotMap = new HashMap<>();
             meetingSlotMap.put(fromTime,meetingSlot);
 
             meetingSlots.put(date,meetingSlotMap);
+            System.out.println("MeetingRoom::addMeetingSlot --- created new slots as no slots exist for this date before");
         }
     }
 
@@ -100,11 +98,24 @@ public class MeetingRoom {
     }
 
     public void addMeetingSlotsForDate(String date){
-        for(int i = 0;i<=24;i++){
+        Map<Integer,MeetingSlot> meetingSlotMap = new HashMap<>();
+        for(int i = 0;i<24;i++){
             MeetingSlot meetingSlot = new MeetingSlot(i,i*100);
-            Map<Integer,MeetingSlot> meetingSlotMap = new HashMap<>();
             meetingSlotMap.put(i,meetingSlot);
-            meetingSlots.put(date,meetingSlotMap);
         }
+        meetingSlots.put(date,meetingSlotMap);
+    }
+
+    public List<Integer> getAvailableMeetingSlots(String date){
+        List<Integer> availableMeetingSlotIDs = new ArrayList<>();
+        Map<Integer, MeetingSlot> availableMeetingSlots = meetingSlots.get(date);
+
+        for(MeetingSlot meetingSlot : availableMeetingSlots.values()){
+            if(!meetingSlot.isOccupied()){
+                availableMeetingSlotIDs.add(meetingSlot.getMeetingSlotID());
+            }
+        }
+
+        return availableMeetingSlotIDs;
     }
 }
