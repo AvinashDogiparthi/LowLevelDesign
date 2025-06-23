@@ -3,6 +3,7 @@ package T_MeetingScheduler;
 import T_MeetingScheduler.MeetingRoom.MeetingRoomService;
 import T_MeetingScheduler.NotificationStrategy.NotificationStrategyEnum;
 
+import java.util.List;
 import java.util.Objects;
 
 public class MeetingScheduler {
@@ -13,7 +14,8 @@ public class MeetingScheduler {
     private MeetingRoomService meetingRoomService;
 
     private MeetingScheduler(){
-
+        userService = new UserService();
+        meetingRoomService = new MeetingRoomService();
     }
 
     public static synchronized MeetingScheduler getInstance(){
@@ -42,7 +44,7 @@ public class MeetingScheduler {
         meetingRoomService.removeAMeetingRoom(meetingRoomID);
     }
 
-    public void addMeetingSlot(String date, int meetingRoomID){
+    public void addMeetingSlotsFor24Hours(String date, int meetingRoomID){
         meetingRoomService.addMeetingSlotsForSpecifiedDate(date,meetingRoomID);
     }
 
@@ -50,7 +52,10 @@ public class MeetingScheduler {
         meetingRoomService.removeMeetingSlot(date,meetingslotID,meetingRoomId);
     }
 
-    public void bookASlotInMeetingRoom(){
+    public List<Integer> getAvailableMeetingSlots(int meetingRoomID, String date){
+        return meetingRoomService.getAvailableMeetingSlots(meetingRoomID,date);
+    }
 
+    public void bookASlotInMeetingRoom(){
     }
 }

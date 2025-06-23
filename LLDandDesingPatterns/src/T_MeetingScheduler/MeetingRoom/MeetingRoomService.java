@@ -2,10 +2,7 @@ package T_MeetingScheduler.MeetingRoom;
 
 import T_MeetingScheduler.User;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class MeetingRoomService {
 
@@ -101,7 +98,7 @@ public class MeetingRoomService {
             MeetingRoom meetingRoom = mapOfMeetingRooms.get(meetingRoomID);
             meetingRoom.addMeetingSlotsForDate(date);
         } else {
-            System.out.println("MeetingRoomService::addMeetingSlotsForSpecifiedDate --- not meeting room exist with the sent meetingRoomID");
+            System.out.println("MeetingRoomService::addMeetingSlotsForSpecifiedDate --- no meeting room exist with the sent meetingRoomID");
         }
     }
 
@@ -109,7 +106,15 @@ public class MeetingRoomService {
         return mapOfMeetingRooms;
     }
 
-    public List<Integer> getAvailableMeetingSlots(){
-        
+    public List<Integer> getAvailableMeetingSlots(int meetingRoomID,String date){
+        List<Integer> availableMeetingSlots = new ArrayList<>();
+        if(mapOfMeetingRooms.containsKey(meetingRoomID)){
+            MeetingRoom meetingRoom = mapOfMeetingRooms.get(meetingRoomID);
+            availableMeetingSlots = meetingRoom.getAvailableMeetingSlots(date);
+        } else {
+            System.out.println("MeetingRoomService::getAvailableMeetingSlots --- no meeting room available with mentioned meeting room ID");
+        }
+
+        return availableMeetingSlots;
     }
 }
