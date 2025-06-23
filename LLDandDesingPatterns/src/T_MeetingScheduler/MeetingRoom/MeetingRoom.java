@@ -118,4 +118,19 @@ public class MeetingRoom {
 
         return availableMeetingSlotIDs;
     }
+
+    public MeetingSlot getMeetingSlotUsingFromTime(String date, int fromTime){
+        MeetingSlot returnableMeetingSlot = null;
+        if(meetingSlots.containsKey(date)){
+            Map<Integer,MeetingSlot> meetingSlotMap = meetingSlots.get(date);
+
+            for(MeetingSlot meetingSlot : meetingSlotMap.values()){
+                if(meetingSlot.getFromTime() == fromTime){
+                    returnableMeetingSlot = meetingSlot;
+                }
+            }
+        }
+
+        return returnableMeetingSlot;
+    }
 }

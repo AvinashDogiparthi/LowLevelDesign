@@ -55,41 +55,4 @@ public class NotificationDetails {
     public void setPhoneNumber(long phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
-
-    public static class NotificationDetailsBuilder{
-        private int meetingID;
-        private String message;
-        private int userID;
-        private String email;
-        private long phoneNumber;
-
-        public NotificationDetailsBuilder withMeetingID(int meetingID){
-            this.meetingID = meetingID;
-            return this;
-        }
-
-        public NotificationDetailsBuilder withMessage(String message){
-            this.message = message;
-            return this;
-        }
-
-        public NotificationDetailsBuilder withUserID(int userID){
-            this.userID = userID;
-            return this;
-        }
-
-        public NotificationDetailsBuilder withEmail(String email){
-            this.email = email;
-            return this;
-        }
-
-        public NotificationDetailsBuilder withPhoneNumber(long phoneNumber){
-            this.phoneNumber = phoneNumber;
-            return this;
-        }
-
-        public NotificationDetails build(){
-            return new NotificationDetails(this);
-        }
-    }
 }

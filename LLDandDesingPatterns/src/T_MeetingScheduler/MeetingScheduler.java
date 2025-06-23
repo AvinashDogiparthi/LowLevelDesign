@@ -1,6 +1,7 @@
 package T_MeetingScheduler;
 
 import T_MeetingScheduler.MeetingRoom.MeetingRoomService;
+import T_MeetingScheduler.MeetingRoom.MeetingSlot;
 import T_MeetingScheduler.NotificationStrategy.NotificationStrategyEnum;
 
 import java.util.List;
@@ -56,6 +57,24 @@ public class MeetingScheduler {
         return meetingRoomService.getAvailableMeetingSlots(meetingRoomID,date);
     }
 
-    public void bookASlotInMeetingRoom(){
+    public void bookASlotInMeetingRoom(User meetingManger, List<User> participantsList, String date, int fromTime, int meetingSlotID, int meetingRoomID){
+        boolean bookingDone = meetingRoomService.bookASlotInMeetingRoom(meetingManger,participantsList,date,fromTime,meetingSlotID,meetingRoomID);
+        if(bookingDone){
+            for(User user: participantsList){
+                NotificationDetails notificationDetails = new NotificationDetailsBuilder()
+                        .withMeetingID(meetingRoomID)
+                        .withMessage("Blocking your calender for this meeting room")
+                        .withEmail(Integer.toString(user.getUserID()))
+                        .withPhoneNumber(Long.parseLong(Integer.toString(user.getUserID())))
+                        .withUserID(user.getUserID())
+                        .build();
+
+                userService.notifyUser(notificationDetails);
+            }
+        }
+    }
+
+    public MeetingSlot getMeetingSlotUsingFromTime(String date, int meetingroomID,int fromTime){
+       return meetingRoomService.getMeetingSlotusingFromTime(date,meetingroomID,fromTime);
     }
 }
