@@ -1,6 +1,8 @@
 package T_MeetingScheduler.MeetingRoom;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class MeetingRoom {
@@ -83,7 +85,7 @@ public class MeetingRoom {
     }
 
     public MeetingSlot returnMeetingSlot(String date,int meetingSLotID){
-        MeetingSlot returnablemeetingSlot;
+        MeetingSlot returnablemeetingSlot = null;
         if(meetingSlots.containsKey(date)){
             Map<Integer,MeetingSlot> meetingSlotMap = meetingSlots.get(date);
 
@@ -95,5 +97,14 @@ public class MeetingRoom {
         }
 
         return returnablemeetingSlot;
+    }
+
+    public void addMeetingSlotsForDate(String date){
+        for(int i = 0;i<=24;i++){
+            MeetingSlot meetingSlot = new MeetingSlot(i,i*100);
+            Map<Integer,MeetingSlot> meetingSlotMap = new HashMap<>();
+            meetingSlotMap.put(i,meetingSlot);
+            meetingSlots.put(date,meetingSlotMap);
+        }
     }
 }
