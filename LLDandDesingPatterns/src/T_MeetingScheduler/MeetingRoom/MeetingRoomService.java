@@ -2,16 +2,39 @@ package T_MeetingScheduler.MeetingRoom;
 
 import T_MeetingScheduler.User;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class MeetingRoomService {
 
+    // meetingRoomId, meetingRoom object
     Map<Integer,MeetingRoom> mapOfMeetingRooms;
 
     public MeetingRoomService() {
         this.mapOfMeetingRooms = new HashMap<>();
+        addMeetingRooms();
+        addMeetingSlots();
+    }
+
+    private void addMeetingRooms() {
+
+        for(int i = 0;i<15;i++){
+            MeetingRoom meetingRoom = new MeetingRoom(i);
+            mapOfMeetingRooms.put(i,meetingRoom);
+        }
+    }
+
+    private void addMeetingSlots(){
+        List<String> dates = Arrays.asList("23/6/2025","22/6/2025");
+        for(String date : dates){
+            for(MeetingRoom meetingRoom : mapOfMeetingRooms.values()){
+                for(int i = 0;i<=24;i++){
+                    meetingRoom.addMeetingSlot(date,i,i*100);
+                }
+            }
+        }
     }
 
     public void addANewMeetingRoom(int meetingRoomID){
@@ -21,6 +44,16 @@ public class MeetingRoomService {
         } else {
             MeetingRoom meetingRoom = new MeetingRoom(meetingRoomID);
             mapOfMeetingRooms.put(meetingRoomID, meetingRoom);
+            System.out.println("MeetingRoomService::addANewMeetingRoom -- successfully created a new meeting room");
+        }
+    }
+
+    public void removeAMeetingRoom(int meetingRoomID){
+        if(mapOfMeetingRooms.containsKey(meetingRoomID)){
+            mapOfMeetingRooms.remove(meetingRoomID);
+            System.out.println("MeetingRoomService::removeAMeetingRoom -- successfully removed a meeting room");
+        } else {
+            System.out.println("MeetingRoomService::removeAMeetingRoom -- no meeting room exist with the mentioned meeting room ID");
         }
     }
 
@@ -61,5 +94,22 @@ public class MeetingRoomService {
         } else {
             System.out.println("MeetingRoomService::bookASlotInMeetingRoom --- no meeting room exist with the sent room ID");
         }
+    }
+
+    public void addMeetingSlotsForSpecifiedDate(String date, int meetingRoomID){
+        if(mapOfMeetingRooms.containsKey(meetingRoomID)){
+            MeetingRoom meetingRoom = mapOfMeetingRooms.get(meetingRoomID);
+            meetingRoom.addMeetingSlotsForDate(date);
+        } else {
+            System.out.println("MeetingRoomService::addMeetingSlotsForSpecifiedDate --- not meeting room exist with the sent meetingRoomID");
+        }
+    }
+
+    public Map<Integer,MeetingRoom> getMapOfMeetingRooms(){
+        return mapOfMeetingRooms;
+    }
+
+    public List<Integer> getAvailableMeetingSlots(){
+        
     }
 }

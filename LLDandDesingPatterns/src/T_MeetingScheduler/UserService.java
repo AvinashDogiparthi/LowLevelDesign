@@ -1,6 +1,7 @@
 package T_MeetingScheduler;
 
 import T_MeetingScheduler.NotificationStrategy.NotificationStrategy;
+import T_MeetingScheduler.NotificationStrategy.NotificationStrategyEnum;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -25,5 +26,32 @@ public class UserService {
             System.out.println("UserService::notifyUser ---- Invalid notification strategy (no class found) --- so halting the process");
             return;
         }
+    }
+
+    public User registerANewUser(int userID, NotificationStrategyEnum notificationStrategyEnum){
+
+        User user = null;
+        if(userMap.containsKey(userID)){
+            System.out.println("UserService::registerANewUser --- user already exist, please update");
+        } else {
+            user = new User(userID, notificationStrategyEnum);
+            userMap.put(userID,user);
+        }
+
+        return user;
+    }
+
+    public void updateExistingUserStrategy(int userID, NotificationStrategyEnum notificationStrategyEnum){
+        if(userMap.containsKey(userID)){
+            User user = userMap.get(userID);
+            user.setNotificationStrategyEnum(notificationStrategyEnum);
+            userMap.put(userID,user);
+        } else {
+            System.out.println("UserService::updateExistingUserStrategy --- user doesn't exist so cannot update user");
+        }
+    }
+
+    public Map<Integer,User> getAvailableUsers(){
+        return this.userMap;
     }
 }
