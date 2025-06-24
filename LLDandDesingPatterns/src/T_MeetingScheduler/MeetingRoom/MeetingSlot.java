@@ -62,9 +62,15 @@ public class MeetingSlot {
         this.meetingSlotID = meetingSlotID;
     }
 
+    public List<User> getMeetingParticipants() {
+        return meetingParticipants;
+    }
 
+    public void setMeetingParticipants(List<User> meetingParticipants) {
+        this.meetingParticipants = meetingParticipants;
+    }
 
-    public void bookMeetingSlot(User slotManger,List<User> userIDs){
+    public void bookMeetingSlot(User slotManger, List<User> userIDs){
         this.meetingSlotManager = slotManger;
         this.meetingParticipants = userIDs;
         this.isOccupied = true;
