@@ -1,5 +1,7 @@
 package T_MeetingScheduler;
 
+import T_MeetingScheduler.NotificationDetails.NotificationDetails;
+import T_MeetingScheduler.NotificationDetails.NotificationStrategyFactory;
 import T_MeetingScheduler.NotificationStrategy.NotificationStrategy;
 import T_MeetingScheduler.NotificationStrategy.NotificationStrategyEnum;
 

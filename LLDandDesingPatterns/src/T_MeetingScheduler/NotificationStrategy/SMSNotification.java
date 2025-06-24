@@ -1,6 +1,6 @@
 package T_MeetingScheduler.NotificationStrategy;
 
-import T_MeetingScheduler.NotificationDetails;
+import T_MeetingScheduler.NotificationDetails.NotificationDetails;
 
 public class SMSNotification implements NotificationStrategy {
 

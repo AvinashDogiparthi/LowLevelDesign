@@ -1,4 +1,4 @@
-package T_MeetingScheduler;
+package T_MeetingScheduler.NotificationDetails;
 
 public class NotificationDetailsBuilder{
     public int meetingID;

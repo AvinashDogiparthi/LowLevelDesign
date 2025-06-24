@@ -4,6 +4,7 @@ import java.util.*;
 
 public class MeetingRoom {
 
+    // Map<date, Map<meetingslotID, meetingSlot>>
     private Map<String, Map<Integer,MeetingSlot>>  meetingSlots;
     private int meetingRoomID;
 

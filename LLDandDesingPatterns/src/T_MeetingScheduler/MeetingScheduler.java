@@ -2,6 +2,8 @@ package T_MeetingScheduler;
 
 import T_MeetingScheduler.MeetingRoom.MeetingRoomService;
 import T_MeetingScheduler.MeetingRoom.MeetingSlot;
+import T_MeetingScheduler.NotificationDetails.NotificationDetails;
+import T_MeetingScheduler.NotificationDetails.NotificationDetailsBuilder;
 import T_MeetingScheduler.NotificationStrategy.NotificationStrategyEnum;
 
 import java.util.List;
