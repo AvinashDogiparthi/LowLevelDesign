@@ -27,5 +27,13 @@ public class MeetingSchedulerDemo {
         if(!meetingSlot.isOccupied() && availableSlotsInNewMeetingRoom.contains(meetingSlot.getMeetingSlotID())){
             meetingScheduler.bookASlotInMeetingRoom(avinash, Arrays.asList(deepak,vamshi,preetham),"23/6/25",1,meetingSlot.getMeetingSlotID(),121312);
         }
+
+        List<Integer> availableSlotsInNewMeetingRoom1 = meetingScheduler.getAvailableMeetingSlots(121312, "23/6/25");
+        System.out.println("Available meeting slots : "+ availableSlotsInNewMeetingRoom1.size());
+
+        meetingScheduler.cancelASlotInMeetingRoom(avinash, Arrays.asList(deepak,vamshi,preetham),"23/6/25",1,meetingSlot.getMeetingSlotID(),121312);
+
+        List<Integer> availableSlotsInNewMeetingRoom2 = meetingScheduler.getAvailableMeetingSlots(121312, "23/6/25");
+        System.out.println("Available meeting slots : "+ availableSlotsInNewMeetingRoom2.size());
     }
 }

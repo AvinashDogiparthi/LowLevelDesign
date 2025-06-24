@@ -133,4 +133,38 @@ public class MeetingRoomService {
 
         return meetingSlot;
     }
+
+    public boolean cancelBookingDoneByUser(User meetingManger, List<User> participantsList, String date, int fromTime, int meetingSlotID, int meetingRoomID){
+        boolean cancellationDone = false;
+        if(mapOfMeetingRooms.containsKey(meetingRoomID)){
+            MeetingRoom meetingRoom = mapOfMeetingRooms.get(meetingRoomID);
+            if(meetingRoom.checkIfSlotExists(date,meetingSlotID)){
+                MeetingSlot meetingSlot = meetingRoom.returnMeetingSlot(date,meetingSlotID);
+
+                if(Objects.nonNull(meetingSlot)){
+
+                    if(meetingSlot.isOccupied()){
+
+                        if(meetingSlot.getMeetingSlotManager().getUserID() == meetingManger.getUserID()){
+
+                            System.out.println("MeetingRoomService::cancelBookingDoneByUser --- into the actual cancellation logic, will be cancelling the slot soon");
+                            meetingSlot.setOccupied(false);
+                            meetingSlot.setMeetingSlotManager(null);
+                            meetingSlot.setMeetingParticipants(null);
+                            System.out.println("MeetingRoomService::cancelBookingDoneByUser --- cancellation done, will proceed with notifying user regarding cancellation");
+                            cancellationDone = true;
+                        } else {
+                            System.out.println("MeetingRoomService::cancelBookingDoneByUser --- AUTHORIZATION ISSUE, user can only cancel the slots which were booked by him");
+                        }
+                    }
+                } else {
+                    System.out.println("MeetingRoomService::cancelBookignDoneByUser -- no meeting slot foudn with the specified meeting room ID");
+                }
+            }
+        } else {
+            System.out.println("MeetingRoomService::cancelBookignDoneByUser -- no meeting room foudn with the specified meeting room ID");
+        }
+
+        return cancellationDone;
+    }
 }

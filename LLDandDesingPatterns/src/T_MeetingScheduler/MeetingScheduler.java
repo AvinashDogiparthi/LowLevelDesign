@@ -79,4 +79,21 @@ public class MeetingScheduler {
     public MeetingSlot getMeetingSlotUsingFromTime(String date, int meetingroomID,int fromTime){
        return meetingRoomService.getMeetingSlotusingFromTime(date,meetingroomID,fromTime);
     }
+
+    public void cancelASlotInMeetingRoom(User meetingManger, List<User> participantsList, String date, int fromTime, int meetingSlotID, int meetingRoomID){
+        boolean cancellationDone = meetingRoomService.cancelBookingDoneByUser(meetingManger,participantsList,date,fromTime,meetingSlotID,meetingRoomID);
+        if(cancellationDone){
+            for(User user: participantsList){
+                NotificationDetails notificationDetails = new NotificationDetailsBuilder()
+                        .withMeetingID(meetingRoomID)
+                        .withMessage("Cancellation of booking")
+                        .withEmail(Integer.toString(user.getUserID()))
+                        .withPhoneNumber(Long.parseLong(Integer.toString(user.getUserID())))
+                        .withUserID(user.getUserID())
+                        .build();
+
+                userService.notifyUser(notificationDetails);
+            }
+        }
+    }
 }
