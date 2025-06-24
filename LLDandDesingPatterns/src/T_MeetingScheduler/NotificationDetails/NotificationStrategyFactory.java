@@ -1,4 +1,4 @@
-package T_MeetingScheduler;
+package T_MeetingScheduler.NotificationDetails;
 
 import T_MeetingScheduler.NotificationStrategy.EmailNotification;
 import T_MeetingScheduler.NotificationStrategy.NotificationStrategy;
