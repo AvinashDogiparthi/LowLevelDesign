@@ -1,6 +1,7 @@
-package U_FlightBookingManagement;
+package U_FlightBookingManagement.User;
 
 import U_FlightBookingManagement.NotificationStrategy.utils.NotificationStrategyEnum;
+import U_FlightBookingManagement.Seat.SeatCategoryEnum;
 
 public class User {
 

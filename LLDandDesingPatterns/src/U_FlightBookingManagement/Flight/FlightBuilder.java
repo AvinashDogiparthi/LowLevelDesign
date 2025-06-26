@@ -1,4 +1,4 @@
-package U_FlightBookingManagement;
+package U_FlightBookingManagement.Flight;
 
 public class FlightBuilder {
 

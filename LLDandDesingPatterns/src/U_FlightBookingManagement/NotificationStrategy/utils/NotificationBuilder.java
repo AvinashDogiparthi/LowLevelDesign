@@ -1,6 +1,6 @@
 package U_FlightBookingManagement.NotificationStrategy.utils;
 
-import U_FlightBookingManagement.SeatCategoryEnum;
+import U_FlightBookingManagement.Seat.SeatCategoryEnum;
 
 public class NotificationBuilder {
 
