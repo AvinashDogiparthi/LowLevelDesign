@@ -1,6 +1,6 @@
 package U_FlightBookingManagement;
 
-import U_FlightBookingManagement.NotificationStrategy.NotificationStrategyEnum;
+import U_FlightBookingManagement.NotificationStrategy.utils.NotificationStrategyEnum;
 
 public class User {
 

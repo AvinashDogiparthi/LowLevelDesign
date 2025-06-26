@@ -1,8 +1,8 @@
 package U_FlightBookingManagement;
-import U_FlightBookingManagement.NotificationStrategy.NotificationBuilder;
-import U_FlightBookingManagement.NotificationStrategy.NotificationDetails;
+import U_FlightBookingManagement.NotificationStrategy.utils.NotificationBuilder;
+import U_FlightBookingManagement.NotificationStrategy.utils.NotificationDetails;
 import U_FlightBookingManagement.NotificationStrategy.NotificationStrategy;
-import U_FlightBookingManagement.NotificationStrategy.NotificationStrategyFactory;
+import U_FlightBookingManagement.NotificationStrategy.utils.NotificationStrategyFactory;
 
 import java.util.*;
 
@@ -108,7 +108,7 @@ public class Flight {
             this.availableEconomySeats -= 1;
             this.bookedSeatMap.put(seat.getSeatID(),seat);
             System.out.println("Flight::bookSeat --- BOOKING is done");
-            processNotification(user, seat);
+            processNotificationForBooking(user, seat);
         } else if (seatCategoryEnum == SeatCategoryEnum.ECONOMY && seatCategoryVsSeatMap.containsKey("BUSINESS")){
             List<Seat> seatsLeft = seatCategoryVsSeatMap.get("BUSINESS");
 
@@ -133,7 +133,7 @@ public class Flight {
             this.availableBussinessSeats -= 1;
             this.bookedSeatMap.put(seat.getSeatID(),seat);
             System.out.println("Flight::bookSeat --- BOOKING is done");
-            processNotification(user, seat);
+            processNotificationForBooking(user, seat);
         } else if (seatCategoryEnum == SeatCategoryEnum.PREMIUM && seatCategoryVsSeatMap.containsKey("PREMIUM")){
             List<Seat> seatsLeft = seatCategoryVsSeatMap.get("PREMIUM");
 
@@ -158,56 +158,10 @@ public class Flight {
             this.availableSeatsCount -= 1;
             this.bookedSeatMap.put(seat.getSeatID(),seat);
             System.out.println("Flight::bookSeat --- BOOKING is done");
-            processNotification(user, seat);
+            processNotificationForBooking(user, seat);
         } else {
             System.out.println("Flight::bookSeat --- INCORRECT seat category please use available seat categories for this flight");
         }
-    }
-
-    private static void processNotification(User user, Seat seat) {
-        NotificationDetails notificationDetails = new NotificationBuilder()
-                .withUserID(user.getUserID())
-                .withBookingStatus(true)
-                .withSeatCategoryEnum(seat.getSeatCategoryEnum())
-                .build();
-        NotificationStrategy notificationStrategy = NotificationStrategyFactory.getNotificationStrategy(user.getNotificationStrategyEnum());
-        notificationStrategy.notify(user,notificationDetails);
-    }
-
-    public void cancelBookedSeat(User user, Seat seatID){
-
-        if(bookedSeatMap.containsKey(seatID)){
-            Seat seat = bookedSeatMap.get(seatID);
-
-            String seatCategory = findSeatCategory(seat);
-
-            if(Objects.nonNull(seatCategory)){
-
-                if(seat.getSeatOwner().getUserID() == user.getUserID()){
-                    seat.setBooked(false);
-                    seat.setSeatOwner(null);
-                    user.setWalletMoney(user.getWalletMoney() + seatCategoryVsPriceMap.get(seatCategory));
-                } else {
-                    System.out.println("Flight::cancelBookedSeat -- user is not authorized to cancel as booking was not done by him");
-                }
-            } else {
-                System.out.println("Flight::cancelBookedSeat --- no such seat category exist");
-            }
-        } else {
-            System.out.println("Flight::cancelBookedSeat --- registration itself has not been done for this seat, please cross check seat ID again");
-        }
-    }
-
-    private String findSeatCategory(Seat seat) {
-        String seatCategory = null;
-        if(seat.getSeatCategoryEnum() == SeatCategoryEnum.ECONOMY){
-            seatCategory = "ECONOMY";
-        } else if (seat.getSeatCategoryEnum() == SeatCategoryEnum.BUSINESS){
-            seatCategory = "BUSINESS";
-        } else if (seat.getSeatCategoryEnum() == SeatCategoryEnum.PREMIUM){
-            seatCategory = "PREMIUM";
-        }
-        return seatCategory;
     }
 
     public void removeSeat(int seatID){
@@ -223,6 +177,31 @@ public class Flight {
         }
     }
 
+    public void cancelBookedSeat(User user, Seat seatID){
+
+        if(bookedSeatMap.containsKey(seatID)){
+            Seat seat = bookedSeatMap.get(seatID);
+
+            String seatCategory = findSeatCategory(seat);
+
+            if(Objects.nonNull(seatCategory)){
+
+                if(seat.getSeatOwner().getUserID() == user.getUserID()){
+                    seat.setBooked(false);
+                    seat.setSeatOwner(null);
+                    user.setWalletMoney(user.getWalletMoney() + seatCategoryVsPriceMap.get(seatCategory));
+                    processNotificationForCancelling(user, seat);
+                } else {
+                    System.out.println("Flight::cancelBookedSeat -- user is not authorized to cancel as booking was not done by him");
+                }
+            } else {
+                System.out.println("Flight::cancelBookedSeat --- no such seat category exist");
+            }
+        } else {
+            System.out.println("Flight::cancelBookedSeat --- registration itself has not been done for this seat, please cross check seat ID again");
+        }
+    }
+
     private void reduceRespectiveSeatsCount(Seat seat) {
         if(seat.getSeatCategoryEnum() == SeatCategoryEnum.ECONOMY){
             this.availableEconomySeats -= 1;
@@ -231,6 +210,38 @@ public class Flight {
         } else {
             this.availablePremiumSeats -= 1;
         }
+    }
+
+    private static void processNotificationForBooking(User user, Seat seat) {
+        NotificationDetails notificationDetails = new NotificationBuilder()
+                .withUserID(user.getUserID())
+                .withBookingStatus(true)
+                .withSeatCategoryEnum(seat.getSeatCategoryEnum())
+                .build();
+        NotificationStrategy notificationStrategy = NotificationStrategyFactory.getNotificationStrategy(user.getNotificationStrategyEnum());
+        notificationStrategy.notify(user,notificationDetails);
+    }
+
+    private static void processNotificationForCancelling(User user, Seat seat) {
+        NotificationDetails notificationDetails = new NotificationBuilder()
+                .withUserID(user.getUserID())
+                .withCancellationStatus(true)
+                .withSeatCategoryEnum(seat.getSeatCategoryEnum())
+                .build();
+        NotificationStrategy notificationStrategy = NotificationStrategyFactory.getNotificationStrategy(user.getNotificationStrategyEnum());
+        notificationStrategy.notify(user,notificationDetails);
+    }
+
+    private String findSeatCategory(Seat seat) {
+        String seatCategory = null;
+        if(seat.getSeatCategoryEnum() == SeatCategoryEnum.ECONOMY){
+            seatCategory = "ECONOMY";
+        } else if (seat.getSeatCategoryEnum() == SeatCategoryEnum.BUSINESS){
+            seatCategory = "BUSINESS";
+        } else if (seat.getSeatCategoryEnum() == SeatCategoryEnum.PREMIUM){
+            seatCategory = "PREMIUM";
+        }
+        return seatCategory;
     }
 
     public void increaseBusinessPrice(int requestedAmount){
