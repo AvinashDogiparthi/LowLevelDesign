@@ -1,4 +1,4 @@
-package U_FlightBookingManagement.NotificationStrategy;
+package U_FlightBookingManagement.NotificationStrategy.utils;
 
 import U_FlightBookingManagement.SeatCategoryEnum;
 

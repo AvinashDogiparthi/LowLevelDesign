@@ -1,4 +1,4 @@
-package U_FlightBookingManagement.NotificationStrategy;
+package U_FlightBookingManagement.NotificationStrategy.utils;
 
 public enum NotificationStrategyEnum {
 

@@ -1,4 +1,8 @@
-package U_FlightBookingManagement.NotificationStrategy;
+package U_FlightBookingManagement.NotificationStrategy.utils;
+
+import U_FlightBookingManagement.NotificationStrategy.EmailNotification;
+import U_FlightBookingManagement.NotificationStrategy.NotificationStrategy;
+import U_FlightBookingManagement.NotificationStrategy.SMSNotification;
 
 public class NotificationStrategyFactory {
 
