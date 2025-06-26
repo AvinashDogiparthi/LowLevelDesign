@@ -1,8 +1,11 @@
-package U_FlightBookingManagement;
+package U_FlightBookingManagement.Flight;
 import U_FlightBookingManagement.NotificationStrategy.utils.NotificationBuilder;
 import U_FlightBookingManagement.NotificationStrategy.utils.NotificationDetails;
 import U_FlightBookingManagement.NotificationStrategy.NotificationStrategy;
 import U_FlightBookingManagement.NotificationStrategy.utils.NotificationStrategyFactory;
+import U_FlightBookingManagement.Seat.Seat;
+import U_FlightBookingManagement.Seat.SeatCategoryEnum;
+import U_FlightBookingManagement.User.User;
 
 import java.util.*;
 
@@ -83,11 +86,10 @@ public class Flight {
         }
     }
 
-    public void bookSeat(SeatCategoryEnum seatCategoryEnum, User user){
+    public Seat bookSeat(SeatCategoryEnum seatCategoryEnum, User user){
+        Seat seat = null;
         if(seatCategoryEnum == SeatCategoryEnum.ECONOMY && seatCategoryVsSeatMap.containsKey("ECONOMY")){
             List<Seat> seatsLeft = seatCategoryVsSeatMap.get("ECONOMY");
-
-            Seat seat = null;
 
             for(Seat iterableSeat : seatsLeft){
                 if(Objects.isNull(seat)){
@@ -112,8 +114,6 @@ public class Flight {
         } else if (seatCategoryEnum == SeatCategoryEnum.ECONOMY && seatCategoryVsSeatMap.containsKey("BUSINESS")){
             List<Seat> seatsLeft = seatCategoryVsSeatMap.get("BUSINESS");
 
-            Seat seat = null;
-
             for(Seat iterableSeat : seatsLeft){
                 if(Objects.isNull(seat)){
                     seat = iterableSeat;
@@ -136,8 +136,6 @@ public class Flight {
             processNotificationForBooking(user, seat);
         } else if (seatCategoryEnum == SeatCategoryEnum.PREMIUM && seatCategoryVsSeatMap.containsKey("PREMIUM")){
             List<Seat> seatsLeft = seatCategoryVsSeatMap.get("PREMIUM");
-
-            Seat seat = null;
 
             for(Seat iterableSeat : seatsLeft){
                 if(Objects.isNull(seat)){
@@ -162,6 +160,8 @@ public class Flight {
         } else {
             System.out.println("Flight::bookSeat --- INCORRECT seat category please use available seat categories for this flight");
         }
+
+        return seat;
     }
 
     public void removeSeat(int seatID){
@@ -177,7 +177,7 @@ public class Flight {
         }
     }
 
-    public void cancelBookedSeat(User user, Seat seatID){
+    public void cancelBookedSeat(User user, int seatID){
 
         if(bookedSeatMap.containsKey(seatID)){
             Seat seat = bookedSeatMap.get(seatID);
@@ -212,7 +212,28 @@ public class Flight {
         }
     }
 
-    private static void processNotificationForBooking(User user, Seat seat) {
+    public void updateEconomySeatPrice(int economySeatPrice){
+        seatCategoryVsPriceMap.put("ECONOMY",economySeatPrice);
+        for(Seat seat : seatCategoryVsSeatMap.get("ECONOMY")){
+            seat.setSeatPrice(economySeatPrice);
+        }
+    }
+
+    public void updateBusinessSeatPrice(int businessSeatPrice){
+        seatCategoryVsPriceMap.put("BUSINESS",businessSeatPrice);
+        for(Seat seat : seatCategoryVsSeatMap.get("BUSINESS")){
+            seat.setSeatPrice(businessSeatPrice);
+        }
+    }
+
+    public void updatePremimumSeatPrice(int premiumSeatPrice) {
+        seatCategoryVsPriceMap.put("PREMIUM", premiumSeatPrice);
+        for (Seat seat : seatCategoryVsSeatMap.get("PREMIUM")) {
+            seat.setSeatPrice(premiumSeatPrice);
+        }
+    }
+
+    private void processNotificationForBooking(User user, Seat seat) {
         NotificationDetails notificationDetails = new NotificationBuilder()
                 .withUserID(user.getUserID())
                 .withBookingStatus(true)
@@ -222,7 +243,7 @@ public class Flight {
         notificationStrategy.notify(user,notificationDetails);
     }
 
-    private static void processNotificationForCancelling(User user, Seat seat) {
+    private void processNotificationForCancelling(User user, Seat seat) {
         NotificationDetails notificationDetails = new NotificationBuilder()
                 .withUserID(user.getUserID())
                 .withCancellationStatus(true)

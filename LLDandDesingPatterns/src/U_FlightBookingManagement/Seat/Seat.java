@@ -1,4 +1,6 @@
-package U_FlightBookingManagement;
+package U_FlightBookingManagement.Seat;
+
+import U_FlightBookingManagement.User.User;
 
 public class Seat {
 

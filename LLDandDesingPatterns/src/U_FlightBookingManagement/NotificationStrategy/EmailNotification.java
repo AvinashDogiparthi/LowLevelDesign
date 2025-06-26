@@ -1,7 +1,7 @@
 package U_FlightBookingManagement.NotificationStrategy;
 
 import U_FlightBookingManagement.NotificationStrategy.utils.NotificationDetails;
-import U_FlightBookingManagement.User;
+import U_FlightBookingManagement.User.User;
 
 public class EmailNotification implements NotificationStrategy{
 
