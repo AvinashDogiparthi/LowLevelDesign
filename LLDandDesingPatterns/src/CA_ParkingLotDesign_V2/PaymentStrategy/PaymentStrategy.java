@@ -1,6 +1,6 @@
 package CA_ParkingLotDesign_V2.PaymentStrategy;
 
-public interface ParkingStrategy {
+public interface PaymentStrategy {
 
     void pay();
 }
