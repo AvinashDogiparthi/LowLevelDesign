@@ -1,5 +1,6 @@
 package V_HotelManagementSystem;
 
+import V_HotelManagementSystem.Booking.Booking;
 import V_HotelManagementSystem.PaymentStrategy.PaymentStrategyEnum;
 import V_HotelManagementSystem.Room.Room;
 import V_HotelManagementSystem.User.User;
@@ -39,7 +40,13 @@ public class HotelManagementDemo {
                 .build();
 
         hotelManagementService.addUser(user1);
-        hotelManagementService.bookARoom(user1.getUserID(),"raddisonBlue",availableRooms.get(0).getRoomID(),1, PaymentStrategyEnum.UPI_PAYMENT);
+        Booking bookingforUser1 = hotelManagementService.bookARoom(user1.getUserID(),"raddisonBlue",availableRooms.get(0).getRoomID(),1, PaymentStrategyEnum.UPI_PAYMENT);
+        List<Room> availableRoomsBooking = hotelManagementService.getAvailableRooms("raddisonBlue");
+        System.out.println("Total available rooms : "+availableRoomsBooking.size());
+
+        hotelManagementService.cancelBooking(bookingforUser1.getBookingID());
+        List<Room> availableRoomsPostCancellation = hotelManagementService.getAvailableRooms("raddisonBlue");
+        System.out.println("Total available rooms : "+availableRoomsPostCancellation.size());
     }
 
     public static void addRooms(HotelManagementService hotelManagementService, String userID, String hotelID){
