@@ -18,13 +18,13 @@ public class Booking {
 
     }
 
-    public Booking(String userID, String roomID, String hotelID, String bookingID, int checkInTime, int checkOutTime, PaymentStrategy paymentStrategy, int amountPaid, BookingStatus bookingStatus) {
+    public Booking(String userID, String roomID, String hotelID, String bookingID, int checkInTime, PaymentStrategy paymentStrategy, int amountPaid, BookingStatus bookingStatus) {
         this.userID = userID;
         this.roomID = roomID;
         this.hotelID = hotelID;
         this.bookingID = bookingID;
         this.checkInTime = checkInTime;
-        this.checkOutTime = checkOutTime;
+        this.checkOutTime = 0;
         this.paymentStrategy = paymentStrategy;
         this.amountPaid = amountPaid;
         this.bookingStatus = bookingStatus;
