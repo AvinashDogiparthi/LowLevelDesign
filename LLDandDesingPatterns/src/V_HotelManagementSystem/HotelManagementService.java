@@ -78,6 +78,46 @@ public class HotelManagementService {
         return booking;
     }
 
+    public void cancelBooking(String bookingID){
+        if(bookingMap.containsKey(bookingID)){
+            Booking booking = bookingMap.get(bookingID);
+            this.bookingMap.remove(bookingID);
+            String userID = booking.getUserID();
+            removeBookingFromHotelBooking(booking.getHotelID(),bookingID);
+            removeBookingFromUserMap(userID,bookingID);
+            User user = userService.getUser(userID);
+            user.setWalletMoney(user.getWalletMoney() + booking.getAmountPaid());
+
+            Hotel hotel = hotelMap.get(booking.getHotelID());
+            hotel.editBookingStatusOfaSpecificRoom(booking.getRoomID(), false);
+            System.out.println("Cancelled the booking");
+        } else {
+            System.out.println("In valid booking ID");
+        }
+    }
+
+    public void removeBookingFromHotelBooking(String hotelID, String bookingID){
+        if(this.hotelBookingsMap.containsKey(hotelID)){
+            Map<String, Booking> bookingList = this.hotelBookingsMap.get(hotelID);
+            bookingList.remove(bookingID);
+        } else {
+            System.out.println("No such hotel exist");
+        }
+    }
+
+    public void removeBookingFromUserMap(String userId, String bookingID){
+        if(this.userBookingsMap.containsKey(userId)){
+            List<Booking> bookingList = this.userBookingsMap.get(userId);
+            for(Booking booking : bookingList){
+                if(booking.getBookingID() == bookingID){
+                    booking.setBookingStatus(BookingStatus.CANCELLED);
+                }
+            }
+        } else {
+            System.out.println("No such hotel exist");
+        }
+    }
+
     public void addHotel(String hotelID,String hotelName, String userID){
 
         if(userService.checkUserExistence(userID)){
@@ -212,7 +252,9 @@ public class HotelManagementService {
             Map<String, Room> roomMap = hotel.getMapOfRooms();
 
             for(Room room : roomMap.values()){
-                availableRooms.add(room);
+                if(!room.isBookingDone()){
+                    availableRooms.add(room);
+                }
             }
         } else {
             System.out.println("No such hotel exist please use a valid one");
