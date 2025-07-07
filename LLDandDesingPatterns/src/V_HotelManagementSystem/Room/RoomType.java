@@ -5,7 +5,7 @@ public enum RoomType {
     SINGLE_BED("Single Bed",1000),
     DOUBLE_BED("Double Bed",2000),
     SUITE("Suite",5000),
-    SEA_FACED("SeaFaced", 10000);
+    SEA_FACED("SeaFaced", 4000);
 
     private String type;
     private int price;

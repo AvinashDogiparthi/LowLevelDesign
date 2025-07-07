@@ -65,4 +65,8 @@ public class User {
     public void setWalletMoney(int walletMoney) {
         this.walletMoney = walletMoney;
     }
+
+    public void increaseWalletMoney(int incrementMoney){
+        this.walletMoney += incrementMoney;
+    }
 }

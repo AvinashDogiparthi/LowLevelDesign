@@ -3,11 +3,13 @@ package V_HotelManagementSystem;
 import V_HotelManagementSystem.Booking.Booking;
 import V_HotelManagementSystem.PaymentStrategy.PaymentStrategyEnum;
 import V_HotelManagementSystem.Room.Room;
+import V_HotelManagementSystem.Room.RoomType;
 import V_HotelManagementSystem.User.User;
 import V_HotelManagementSystem.User.UserBuilder;
 import V_HotelManagementSystem.User.UserType;
 
 import java.util.List;
+import java.util.Objects;
 
 public class HotelManagementDemo {
 
@@ -44,9 +46,27 @@ public class HotelManagementDemo {
         List<Room> availableRoomsBooking = hotelManagementService.getAvailableRooms("raddisonBlue");
         System.out.println("Total available rooms : "+availableRoomsBooking.size());
 
-        hotelManagementService.cancelBooking(bookingforUser1.getBookingID());
-        List<Room> availableRoomsPostCancellation = hotelManagementService.getAvailableRooms("raddisonBlue");
-        System.out.println("Total available rooms : "+availableRoomsPostCancellation.size());
+        if(Objects.nonNull(bookingforUser1)){
+
+            hotelManagementService.cancelBooking(bookingforUser1.getBookingID());
+            List<Room> availableRoomsPostCancellation = hotelManagementService.getAvailableRooms("raddisonBlue");
+            System.out.println("Total available rooms : "+availableRoomsPostCancellation.size());
+        }
+
+        List<RoomType> roomTypes = List.of(RoomType.DOUBLE_BED,RoomType.SEA_FACED);
+        hotelManagementService.addRoomTypes("raddisonBlue",availableRooms.get(0).getRoomID(), adminUser.getUserID(), roomTypes);
+
+        // edge case to test the booking if user doesnt have enough wallet money to book a room
+        hotelManagementService.bookARoom(user1.getUserID(), "raddisonBlue", availableRooms.get(0).getRoomID(),9,PaymentStrategyEnum.UPI_PAYMENT);
+        List<Room> availableRoomsAfterBookingFailure = hotelManagementService.getAvailableRooms("raddisonBlue");
+        System.out.println("Total available rooms : "+availableRoomsAfterBookingFailure.size());
+
+
+        // increasing user wallet money to make him elgible for booking
+        user1.increaseWalletMoney(7000);
+        hotelManagementService.bookARoom(user1.getUserID(), "raddisonBlue", availableRooms.get(0).getRoomID(),9,PaymentStrategyEnum.UPI_PAYMENT);
+        List<Room> availableRoomsPostWalletMoneyIncremenet = hotelManagementService.getAvailableRooms("raddisonBlue");
+        System.out.println("Total available rooms : "+availableRoomsPostWalletMoneyIncremenet.size());
     }
 
     public static void addRooms(HotelManagementService hotelManagementService, String userID, String hotelID){
