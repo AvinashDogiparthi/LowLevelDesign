@@ -6,6 +6,7 @@ import V_HotelManagementSystem.PaymentStrategy.PaymentStrategy;
 import V_HotelManagementSystem.PaymentStrategy.PaymentStrategyEnum;
 import V_HotelManagementSystem.PaymentStrategy.PaymentStrategyFactory;
 import V_HotelManagementSystem.Room.Room;
+import V_HotelManagementSystem.Room.RoomType;
 import V_HotelManagementSystem.User.User;
 import V_HotelManagementSystem.User.UserBuilder;
 import V_HotelManagementSystem.User.UserService;
@@ -49,19 +50,24 @@ public class HotelManagementService {
                 Room room = hotel.getASpecificRoom(roomID);
                 if(Objects.nonNull(room)){
                     if(!room.isBookingDone()){
-                        int amountPaid = room.calculateRoomPrice();
+                        int amountNeedToBePaid = room.calculateRoomPrice();
                         User user = userService.getUser(userID);
-                        user.setWalletMoney(user.getWalletMoney() - amountPaid);
-                        room.setBookingDone(true);
-                        PaymentStrategy paymentStrategyToBeFollowed = PaymentStrategyFactory.getPaymentStrategy(paymentStrategyEnum);
-                        paymentStrategyToBeFollowed.pay(amountPaid);
-                        System.out.println("Booking done for room : "+roomID);
-                        booking = new Booking(userID,roomID,hotelID,RandomStringGenerator.generateRandomString(userID,hotelID,roomID,10),checkInTime,paymentStrategyToBeFollowed,amountPaid, BookingStatus.BOOKED);
+                        if(user.getWalletMoney() >= amountNeedToBePaid){
+                            user.setWalletMoney(user.getWalletMoney() - amountNeedToBePaid);
+                            room.setBookingDone(true);
+                            PaymentStrategy paymentStrategyToBeFollowed = PaymentStrategyFactory.getPaymentStrategy(paymentStrategyEnum);
+                            paymentStrategyToBeFollowed.pay(amountNeedToBePaid);
+                            System.out.println("Booking done for room : "+roomID);
+                            booking = new Booking(userID,roomID,hotelID,RandomStringGenerator.generateRandomString(userID,hotelID,roomID,10),checkInTime,paymentStrategyToBeFollowed,amountNeedToBePaid, BookingStatus.BOOKED);
 
-                        // adding booking details into in-memory db's
-                        this.bookingMap.put(booking.getBookingID(), booking);
-                        addBookingIntoUserMap(userID,booking.getBookingID());
-                        addBookingsIntoHotel(hotelID, booking.getBookingID());
+                            // adding booking details into in-memory db's
+                            this.bookingMap.put(booking.getBookingID(), booking);
+                            addBookingIntoUserMap(userID,booking.getBookingID());
+                            addBookingsIntoHotel(hotelID, booking.getBookingID());
+                        } else {
+                            System.out.println("In sufficient wallet balance to book specified room, please recharge your wallet");
+                            System.out.println("Money need to book this room : "+room.calculateRoomPrice()+" and user wallet balance : "+user.getWalletMoney());
+                        }
                     } else {
                         System.out.println("Room is not available to book as it is booked by some other user, please select another room");
                     }
@@ -236,12 +242,25 @@ public class HotelManagementService {
         }
     }
 
-    public void addUser(User user){
-        this.userService.addUser(user);
-    }
+    public void addRoomTypes(String hotelID, String roomID, String userID, List<RoomType> roomTypes){
 
-    public void removeUser(String userID){
-        this.userService.removeUser(userID);
+        if(userService.checkUserExistence(userID)){
+            User user = userService.getUser(userID);
+
+            if(user.getUserType() == UserType.ADMIN){
+                if(this.hotelMap.containsKey(hotelID)){
+
+                    Hotel hotel = this.hotelMap.get(hotelID);
+                    hotel.addRoomTypes(roomID,roomTypes);
+                } else {
+                    System.out.println("No such hotel exist in reservation system");
+                }
+            } else {
+                System.out.println("You are not authorized to perform this operation");
+            }
+        } else {
+            System.out.println("No such user exist in reservation system");
+        }
     }
 
     public List<Room> getAvailableRooms(String hotelID){
@@ -261,5 +280,13 @@ public class HotelManagementService {
         }
 
         return availableRooms;
+    }
+
+    public void addUser(User user){
+        this.userService.addUser(user);
+    }
+
+    public void removeUser(String userID){
+        this.userService.removeUser(userID);
     }
 }

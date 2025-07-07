@@ -93,4 +93,18 @@ public class Hotel {
     public void setMapOfRooms(Map<String, Room> mapOfRooms) {
         this.mapOfRooms = mapOfRooms;
     }
+
+    public void addRoomTypes(String roomID, List<RoomType> roomTypes){
+
+        if(this.mapOfRooms.containsKey(roomID)){
+            Room room = mapOfRooms.get(roomID);
+            for(RoomType roomType : roomTypes){
+                room.addRoomType(roomType);
+            }
+            System.out.println("Addition of room types to room : "+roomID+" is done");
+            System.out.println("Price revision after adding room types to room : "+roomID+" is : "+room.calculateRoomPrice());
+        } else {
+            System.out.println("no such room exist with room ID "+roomID);
+        }
+    }
 }
