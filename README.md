@@ -51,6 +51,8 @@ This folder contains comprehensive implementations of various design patterns.
 - [R_IssueResolvingSystem](#r_issueresolvingsystem) - Issue resolving system to create issue's, letting available agents to pick tickets and tracking issue's
 - [S_TextEditorDesign](#s_texteditordesign) - Any text document has characters arranged in rows and columns. Also each character can have its own style parameters like font name, font size, bold, italic etc. 
 - [T_MeetingScheduler](#t_meetingscheduler) - Implemented a similar microsoft teams scheduler logic.
+- [U_FlightBookingManagement](#u_flightbookingmanagement) - LLD of flight booking management
+- [V_HotelManagementSystem](#v_hotelmanagementsytem) - LLD of hotel management system
 - [Y_Utils](#y_utils) - Utility methods for design implementations.
 - [Z_Exception](#z_exception) - Exception handling utilities.
 
