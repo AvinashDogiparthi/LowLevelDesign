@@ -48,6 +48,9 @@ This folder contains comprehensive implementations of various design patterns.
 - [O_CultFitDesign](#o_cultfitdesign) - CultFit fitness management system.
 - [P_TwitterDesign](#p_twitterdesign) - Twitter-like social media platform.
 - [Q_SwiggyDesign](#q_swiggydesign) - Swiggy food delivery system with coupon discounts.
+- [R_IssueResolvingSystem](#r_issueresolvingsystem) - Issue resolving system to create issue's, letting available agents to pick tickets and tracking issue's
+- [S_TextEditorDesign](#s_texteditordesign) - Any text document has characters arranged in rows and columns. Also each character can have its own style parameters like font name, font size, bold, italic etc. 
+- [T_MeetingScheduler](#t_meetingscheduler) - Implemented a similar microsoft teams scheduler logic.
 - [Y_Utils](#y_utils) - Utility methods for design implementations.
 - [Z_Exception](#z_exception) - Exception handling utilities.
 
