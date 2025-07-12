@@ -43,11 +43,11 @@ public class SelectionState implements State {
 
         if(paidByUser > item.getPrice()){
             getChange(paidByUser-item.getPrice());
-            machine.setVendingMachineState(new DispenseState(machine, productCode));
+            machine.setVendingMachineState(new MoneyDispenser(machine, productCode));
         }
 
         if(paidByUser == item.getPrice()){
-            machine.setVendingMachineState(new DispenseState(machine, productCode));
+            machine.setVendingMachineState(new MoneyDispenser(machine, productCode));
         }
     }
 

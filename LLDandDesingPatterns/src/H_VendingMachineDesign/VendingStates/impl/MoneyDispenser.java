@@ -9,9 +9,9 @@ import Z_Exception.DesignException;
 
 import java.util.List;
 
-public class DispenseState implements State {
+public class MoneyDispenser implements State {
 
-    DispenseState(VendingMachine machine, int codeNumber) throws Exception{
+    MoneyDispenser(VendingMachine machine, int codeNumber) throws Exception{
 
         System.out.println("Currently Vending machine is in DispenseState");
         dispenseProduct(machine, codeNumber);
