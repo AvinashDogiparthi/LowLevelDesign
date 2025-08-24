@@ -1,12 +1,12 @@
-# 📦 Warehouse Management System (LLD)
+# Warehouse Management System (LLD)
 
-## 📘 Overview
+## Overview
 This project implements a **Warehouse Management System** where packages can be assigned and stored in **lockers** based on their size.  
 The design ensures that packages are placed in the most suitable locker and allows efficient assignment, un-assignment, and management of lockers.
 
 ---
 
-## 🎯 Key Features
+## Key Features
 - **Singleton Design Pattern**
     - The `WareHouse` class follows the Singleton pattern to ensure only one warehouse instance is active at a time.
 
@@ -28,7 +28,7 @@ The design ensures that packages are placed in the most suitable locker and allo
 
 ---
 
-## 🏗️ Design Components
+## Design Components
 
 ### 1. **WareHouse**
 - Singleton entry point for managing lockers and packages.
@@ -56,7 +56,7 @@ The design ensures that packages are placed in the most suitable locker and allo
 
 ---
 
-## 📂 Class Responsibilities
+## Class Responsibilities
 
 - **`WareHouse`**
     - Singleton orchestrator for warehouse operations.
