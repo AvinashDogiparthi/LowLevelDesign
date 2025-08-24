@@ -1,12 +1,14 @@
 package L_WareHouseManagementDesign;
 
-import com.sun.source.tree.Tree;
+import L_WareHouseManagementDesign.Locker.Locker;
+import L_WareHouseManagementDesign.Locker.assignStrategy.LockerAssignStrategy;
+import L_WareHouseManagementDesign.Locker.LockerService;
+import L_WareHouseManagementDesign.Package.Package;
+import L_WareHouseManagementDesign.Package.PackageSizeEnum;
 
-import java.sql.SQLOutput;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
-import java.util.TreeMap;
 
 public class WareHouse {
 
@@ -42,11 +44,11 @@ public class WareHouse {
         lockerService.deleteLocker(lockerId);
     }
 
-    public void assignPackage(Package packageNeedstoBeassigned){
+    public void assignPackage(L_WareHouseManagementDesign.Package.Package packageNeedstoBeassigned, LockerAssignStrategy lockerAssignStrategy){
 
         PackageSizeEnum packageSizeEnum = packageNeedstoBeassigned.getPackageSizeEnum();
 
-        Locker locker = lockerService.getAvailableLocker(packageSizeEnum);
+        Locker locker = lockerService.getAvailableLocker(packageSizeEnum,lockerAssignStrategy);
 
         if(Objects.isNull(locker)){
             System.out.println("LockerService::assignPackage--no locker is available with the package size");

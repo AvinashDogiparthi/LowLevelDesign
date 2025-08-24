@@ -1,4 +1,7 @@
-package L_WareHouseManagementDesign;
+package L_WareHouseManagementDesign.Locker;
+
+import L_WareHouseManagementDesign.Package.Package;
+import L_WareHouseManagementDesign.Package.PackageSizeEnum;
 
 public class Locker {
 

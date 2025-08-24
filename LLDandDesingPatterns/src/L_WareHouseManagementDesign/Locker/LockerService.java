@@ -1,6 +1,10 @@
-package L_WareHouseManagementDesign;
+package L_WareHouseManagementDesign.Locker;
 
-import com.sun.source.tree.Tree;
+import L_WareHouseManagementDesign.Locker.assignStrategy.LockerAssign;
+import L_WareHouseManagementDesign.Locker.assignStrategy.LockerAssignFactory;
+import L_WareHouseManagementDesign.Locker.assignStrategy.LockerAssignStrategy;
+import L_WareHouseManagementDesign.Package.Package;
+import L_WareHouseManagementDesign.Package.PackageSizeEnum;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -9,7 +13,7 @@ import java.util.TreeMap;
 
 public class LockerService {
 
-    private Map<Integer,Locker> lockerMap;
+    private Map<Integer, Locker> lockerMap;
     private Map<Integer,Locker> occupiedLockersMap;
     private Map<PackageSizeEnum, TreeMap<Integer,Locker>> availableLockersMap;
 
@@ -87,21 +91,22 @@ public class LockerService {
         return this.lockerMap.get(lockerId);
     }
 
-    public Locker getAvailableLocker(PackageSizeEnum packageSizeEnum){
+    public Locker getAvailableLocker(PackageSizeEnum packageSizeEnum, LockerAssignStrategy lockerAssignStrategy){
 
         TreeMap<Integer,Locker> treeMap = this.availableLockersMap.get(packageSizeEnum);
 
         if(Objects.isNull(treeMap)){
             System.out.println("LockerService::getAvailableLocker-- no such locker is currently available");
         } else {
-            Locker locker = treeMap.get(treeMap.firstEntry().getKey());
+            LockerAssign lockerAssign = LockerAssignFactory.getLockerAssigner(lockerAssignStrategy);
+            Locker locker = lockerAssign.getAvailableLocker(treeMap);
             return locker;
         }
 
         return null;
     }
 
-    public void assignPackageToLocker(int lockerID,Package assignedPackage){
+    public void assignPackageToLocker(int lockerID, Package assignedPackage){
         if(lockerMap.containsKey(lockerID)){
             Locker locker = lockerMap.get(lockerID);
 
