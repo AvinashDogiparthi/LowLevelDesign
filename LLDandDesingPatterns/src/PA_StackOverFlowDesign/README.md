@@ -8,6 +8,8 @@ The design follows an **object-oriented and interface-driven approach**, ensurin
 
 ---
 
+![UML Diagram](PA_StackOverFlowDesign/umldiagram.PNG)
+
 ## Key Features
 
 - **User Management**
