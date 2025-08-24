@@ -8,7 +8,12 @@ The design follows an **object-oriented and interface-driven approach**, ensurin
 
 ---
 
-![UML Diagram](PA_StackOverFlowDesign/umldiagram.PNG)
+## UML Class Diagram
+
+![UML Diagram](https://raw.githubusercontent.com/AvinashDogiparthi/LowLevelDesign/main/LLDandDesingPatterns/src/PA_StackOverFlowDesign/umldiagram.PNG)
+
+
+---
 
 ## Key Features
 
