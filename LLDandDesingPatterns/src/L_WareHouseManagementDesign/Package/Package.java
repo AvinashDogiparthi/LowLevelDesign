@@ -1,4 +1,4 @@
-package L_WareHouseManagementDesign;
+package L_WareHouseManagementDesign.Package;
 
 public class Package {
 
