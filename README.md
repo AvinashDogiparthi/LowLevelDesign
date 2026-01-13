@@ -7,7 +7,7 @@ Welcome to the **System Design and Design Patterns** repository! This repository
 ## 📌 **Table of Contents**
 
 ### **1. Core Concepts and Principles**
-- [A_SOLIDPrinciples](#a_solidprinciples)
+- [A_SOLIDPrinciples](https://github.com/AvinashDogiparthi/LowLevelDesign/tree/main/LLDandDesingPatterns/src/A_SOLIDPrinciples)
 - [B_DesignPatterns](#b_designpatterns)
 
 - ## 🌐 **Design Patterns Folder**
