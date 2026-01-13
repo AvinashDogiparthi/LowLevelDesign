@@ -1,10 +1,10 @@
-# 🚀 System Design and Design Patterns
+# Low Level Design and Design Patterns 
 
 Welcome to the **System Design and Design Patterns** repository! This repository contains a collection of system design solutions and implementation of various design patterns in Java. It serves as a comprehensive reference for developers looking to learn or refresh their understanding of key design concepts.
 
 ---
 
-## 📌 **Table of Contents**
+##  **Table of Contents**
 
 ### **1. Core Concepts and Principles**
 - [A_SOLIDPrinciples](https://github.com/AvinashDogiparthi/LowLevelDesign/tree/main/LLDandDesingPatterns/src/A_SOLIDPrinciples)
@@ -60,7 +60,7 @@ This folder contains comprehensive implementations of various design patterns.
 
 ---
 
-## 💻 **Usage Instructions**
+## **Usage Instructions**
 - Clone the repository and explore each module for detailed examples.
 - Each module has a dedicated README with implementation details and usage.
 
@@ -73,12 +73,12 @@ This folder contains comprehensive implementations of various design patterns.
 
 ---
 
-## 🤝 **Contributing**
+## **Contributing**
 Contributions are welcome! Please open issues for improvements or submit pull requests.
 
 ---
 
-## ⭐ **Support**
+## **Support**
 If you find this repository helpful, please give it a star! Your support encourages more comprehensive guides.
 
 ---
