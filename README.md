@@ -10,7 +10,8 @@ Welcome to the **System Design and Design Patterns** repository! This repository
 - [A_SOLIDPrinciples](https://github.com/AvinashDogiparthi/LowLevelDesign/tree/main/LLDandDesingPatterns/src/A_SOLIDPrinciples)
 - [B_DesignPatterns](https://github.com/AvinashDogiparthi/LowLevelDesign/tree/main/LLDandDesingPatterns/src/B_DesignPatterns)
 
-- ## 🌐 **Design Patterns Folder**
+
+### 🌐 **Design Patterns Folder**
 
 This folder contains comprehensive implementations of various design patterns.
 
@@ -32,10 +33,10 @@ This folder contains comprehensive implementations of various design patterns.
 - **N_FlyweightDesignPattern**: Reusing objects efficiently.
 
 ### **2. System Design Implementations**
-- [C_ParkingLotDesign](#c_parkinglotdesign) - Parking lot management system.
-- [CA_ProducerConsumerDesign](#ca_producerconsumerdesign) - Basic producer consumer design implemented through multithreading.
-- [D_TicTacToeLLD](#d_tictactoelld) - Low-level design of the Tic Tac Toe game.
-- [E_CarRentalSystem](#e_carrentalsystem) - Design of a car rental management system.
+- [C_ParkingLotDesign](https://github.com/AvinashDogiparthi/LowLevelDesign/tree/main/LLDandDesingPatterns/src/CA_ParkingLotDesign_V2) - Parking lot management system.
+- [CA_ProducerConsumerDesign](https://github.com/AvinashDogiparthi/LowLevelDesign/tree/main/LLDandDesingPatterns/src/CA_ProducerConsumerDesign) - Basic producer consumer design implemented through multithreading.
+- [D_TicTacToeLLD](https://github.com/AvinashDogiparthi/LowLevelDesign/tree/main/LLDandDesingPatterns/src/D_TicTacToeLLD) - Low-level design of the Tic Tac Toe game.
+- [E_CarRentalSystem](https://github.com/AvinashDogiparthi/LowLevelDesign/tree/main/LLDandDesingPatterns/src/E_CarRentalSystem) - Design of a car rental management system.
 - [F_SnakeAndLadder](#f_snakeandladder) - Low-level design of the Snake and Ladder game.
 - [G_BookMyShow](#g_bookmyshow) - BookMyShow ticket booking system.
 - [H_VendingMachineDesign](#h_vendingmachinedesign) - Vending machine design.
