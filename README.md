@@ -32,7 +32,7 @@ This folder contains comprehensive implementations of various design patterns.
 - **M_BridgeDesignPattern**: Decoupling abstraction from implementation.
 - **N_FlyweightDesignPattern**: Reusing objects efficiently.
 
-### **2. System Design Implementations**
+### **2. Low Level Designs**
 - [C_ParkingLotDesign](https://github.com/AvinashDogiparthi/LowLevelDesign/tree/main/LLDandDesingPatterns/src/CA_ParkingLotDesign_V2) - Parking lot management system.
 - [CA_ProducerConsumerDesign](https://github.com/AvinashDogiparthi/LowLevelDesign/tree/main/LLDandDesingPatterns/src/CA_ProducerConsumerDesign) - Basic producer consumer design implemented through multithreading.
 - [D_TicTacToeLLD](https://github.com/AvinashDogiparthi/LowLevelDesign/tree/main/LLDandDesingPatterns/src/D_TicTacToeLLD) - Low-level design of the Tic Tac Toe game.
