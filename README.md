@@ -10,7 +10,7 @@ This repository serves as a comprehensive reference for developers mastering **L
 
 ---
 
-## 📑 Table of Contents
+## Table of Contents
 
 1. [Core Concepts](#-core-concepts)
 2. [Design Patterns](#-design-patterns)
@@ -30,7 +30,7 @@ Understanding the foundational principles of software architecture.
 
 ---
 
-## 🎨 Design Patterns
+## Design Patterns
 
 Comprehensive implementations of Creational, Structural, and Behavioral patterns.
 
@@ -54,7 +54,7 @@ Comprehensive implementations of Creational, Structural, and Behavioral patterns
 
 ---
 
-## 🏗️ System Design Solutions (LLD)
+## Low Level Designs (LLD)
 
 Real-world low-level design problems often asked in technical interviews.
 
