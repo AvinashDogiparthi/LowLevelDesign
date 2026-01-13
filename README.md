@@ -83,15 +83,31 @@ cd LowLevelDesign
 
 ---
 
-## **Contributing**
-Contributions are welcome! Please open issues for improvements or submit pull requests.
+## 🤝 Contributing
+
+Contributions are welcome! Whether it's fixing a bug, improving documentation, or adding a new design pattern implementation, your help is appreciated.
+
+1.  **Fork** the repository.
+2.  Create a new branch (`git checkout -b feature/AmazingFeature`).
+3.  **Commit** your changes (`git commit -m 'Add some AmazingFeature'`).
+4.  **Push** to the branch (`git push origin feature/AmazingFeature`).
+5.  Open a **Pull Request**.
+
+Please feel free to open [Issues](https://github.com/AvinashDogiparthi/LowLevelDesign/issues) for improvements or suggestions.
 
 ---
 
-## **Support**
-If you find this repository helpful, please give it a star! Your support encourages more comprehensive guides.
+## ❤️ Support
+
+If you find this repository helpful or use it for your learning, please give it a **Star** ⭐! Your support encourages the creation of more comprehensive guides and design implementations.
 
 ---
 
-## 📧 **Contact**
-For any queries or feedback, feel free to reach out via GitHub.
+## 📧 Contact
+
+For any queries, feedback, or discussions regarding Low Level Design:
+
+* **Email**: dnvavinash@gmail.com
+* **LinkedIN**: [click here](https://www.linkedin.com/in/avinash-dogiparthi-5a6323189/)
+
+Feel free to reach out via GitHub for any collaborations!
