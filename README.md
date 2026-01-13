@@ -36,21 +36,21 @@ Comprehensive implementations of Creational, Structural, and Behavioral patterns
 
 | Code | Pattern Name | Description |
 | :--- | :--- | :--- |
-| **AA** | [Singleton](LLDandDesingPatterns/src/AA_SingletonDesignPattern) | Thread-safe, Lazy, Eager, and Enum implementations. |
-| **A** | [Strategy](LLDandDesingPatterns/src/A_StrategyDesignPattern) | Interchangeable algorithms (e.g., Parking Spot allocation). |
-| **B** | [Observer](LLDandDesingPatterns/src/B_ObserverDesignPattern) | Publish-Subscribe mechanism (e.g., Availability notifications). |
-| **C** | [Factory](LLDandDesingPatterns/src/C_FactoryDesignPattern) | Interface-based object creation logic. |
-| **D** | [Abstract Factory](LLDandDesingPatterns/src/D_AbstractFactoryDesignPattern) | Creating families of related or dependent objects. |
-| **E** | [Chain of Responsibility](LLDandDesingPatterns/src/E_ChainResponsibilityDesignPattern) | Passing requests along a chain of handlers. |
-| **F** | [Proxy](LLDandDesingPatterns/src/F_ProxyDesignPattern) | Controlling access to an object (Lazy loading, Protection). |
-| **G** | [Null Object](LLDandDesingPatterns/src/G_NullObjectDesignPattern) | Handling null references gracefully with default behavior. |
-| **H** | [State](LLDandDesingPatterns/src/H_StateDesignPattern) | Altering object behavior when its internal state changes. |
-| **I** | [Composite](LLDandDesingPatterns/src/I_CompositeDesignPattern) | Tree structures of objects (Part-Whole hierarchy). |
-| **J** | [Adapter](LLDandDesingPatterns/src/J_AdapterDesignPattern) | Bridging incompatible interfaces to work together. |
-| **K** | [Builder](LLDandDesingPatterns/src/K_BuilderDesignPattern) | Step-by-step construction of complex objects. |
-| **L** | [Facade](LLDandDesingPatterns/src/L_FacadeDesignPattern) | Simplified interface to a complex subsystem. |
-| **M** | [Bridge](LLDandDesingPatterns/src/M_BridgeDesignPattern) | Decoupling abstraction from its implementation. |
-| **N** | [Flyweight](LLDandDesingPatterns/src/N_FlyweightDesignPattern) | Efficient sharing of objects to reduce memory load. |
+| **AA** | [Singleton](https://github.com/AvinashDogiparthi/LowLevelDesign/tree/main/LLDandDesingPatterns/src/B_DesignPatterns/AA_SingletonDesignPattern) | Thread-safe, Lazy, Eager, and Enum implementations. |
+| **A** | [Strategy](https://github.com/AvinashDogiparthi/LowLevelDesign/tree/main/LLDandDesingPatterns/src/B_DesignPatterns/A_StrategyDesignPattern) | Interchangeable algorithms (e.g., Parking Spot allocation). |
+| **B** | [Observer](https://github.com/AvinashDogiparthi/LowLevelDesign/tree/main/LLDandDesingPatterns/src/B_DesignPatterns/B_ObserverDesignPattern) | Publish-Subscribe mechanism (e.g., Availability notifications). |
+| **C** | [Factory](https://github.com/AvinashDogiparthi/LowLevelDesign/tree/main/LLDandDesingPatterns/src/B_DesignPatterns/C_FactoryDesignPattern) | Interface-based object creation logic. |
+| **D** | [Abstract Factory](https://github.com/AvinashDogiparthi/LowLevelDesign/tree/main/LLDandDesingPatterns/src/B_DesignPatterns/D_AbstractFactoryDesignPattern) | Creating families of related or dependent objects. |
+| **E** | [Chain of Responsibility](https://github.com/AvinashDogiparthi/LowLevelDesign/tree/main/LLDandDesingPatterns/src/B_DesignPatterns/E_ChainResponsibilityDesignPattern) | Passing requests along a chain of handlers. |
+| **F** | [Proxy](https://github.com/AvinashDogiparthi/LowLevelDesign/tree/main/LLDandDesingPatterns/src/B_DesignPatterns/F_ProxyDesignPattern) | Controlling access to an object (Lazy loading, Protection). |
+| **G** | [Null Object](https://github.com/AvinashDogiparthi/LowLevelDesign/tree/main/LLDandDesingPatterns/src/B_DesignPatterns/G_NullObjectDesignPattern) | Handling null references gracefully with default behavior. |
+| **H** | [State](https://github.com/AvinashDogiparthi/LowLevelDesign/tree/main/LLDandDesingPatterns/src/B_DesignPatterns/H_StateDesignPattern) | Altering object behavior when its internal state changes. |
+| **I** | [Composite](https://github.com/AvinashDogiparthi/LowLevelDesign/tree/main/LLDandDesingPatterns/src/B_DesignPatterns/I_CompositeDesignPattern) | Tree structures of objects (Part-Whole hierarchy). |
+| **J** | [Adapter](https://github.com/AvinashDogiparthi/LowLevelDesign/tree/main/LLDandDesingPatterns/src/B_DesignPatterns/J_AdapterDesignPattern) | Bridging incompatible interfaces to work together. |
+| **K** | [Builder](https://github.com/AvinashDogiparthi/LowLevelDesign/tree/main/LLDandDesingPatterns/src/B_DesignPatterns/K_BuilderDesignPattern) | Step-by-step construction of complex objects. |
+| **L** | [Facade](https://github.com/AvinashDogiparthi/LowLevelDesign/tree/main/LLDandDesingPatterns/src/B_DesignPatterns/L_FacadeDesignPattern) | Simplified interface to a complex subsystem. |
+| **M** | [Bridge](https://github.com/AvinashDogiparthi/LowLevelDesign/tree/main/LLDandDesingPatterns/src/B_DesignPatterns/M_BridgeDesignPattern) | Decoupling abstraction from its implementation. |
+| **N** | [Flyweight](https://github.com/AvinashDogiparthi/LowLevelDesign/tree/main/LLDandDesingPatterns/src/B_DesignPatterns/N_FlyweightDesignPattern) | Efficient sharing of objects to reduce memory load. |
 
 ---
 
