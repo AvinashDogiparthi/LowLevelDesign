@@ -212,6 +212,7 @@ public class OrderService {
 
 #### ✅ The Solution
 Inject dependencies via interfaces.
+
 ![img_2.png](img_2.png)
 
 ```java
