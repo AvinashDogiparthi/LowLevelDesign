@@ -149,6 +149,118 @@ public class Rectangle implements Shape {  }
 public class Square implements Shape {  }
 ```
 
+---
+
+## 4. I — Interface Segregation Principle (ISP)
+**The Rule:** Many small interfaces are better than one large interface. Don’t force clients to implement methods they don’t use.
+
+#### ❌ The Problem
+A Robot is forced to implement eat() because it implements Worker.
+
+```java
+public interface Worker {
+    void work();
+    void eat();
+}
+
+public class RobotWorker implements Worker {
+    public void work() {  }
+    public void eat() { throw new UnsupportedOperationException(); } // Violation!
+}
+```
+
+#### ✅ The Solution
+Split interfaces based on capabilities.
+
+```java
+public interface Workable { void work(); }
+public interface Feedable { void eat(); }
+
+public class RobotWorker implements Workable {
+    public void work() {  }
+}
+```
+
+When to apply :
+* Implementations are throwing UnsupportedOperationException.
+* Interfaces have >8 methods.
+* Different clients use distinct subsets of the interface.
+
+---
+
+## 5. D — Dependency Inversion Principle (DIP)
+**The Rule:** Depend on abstractions, not concrete implementations.
+
+#### ❌ The Problem
+High-level business logic shouldn’t know about low-level details like which database you’re using.
+
+```java
+public class OrderService {
+    // Hard dependency - hard to test, hard to swap
+    private MySQLDatabase database = new MySQLDatabase();
+    private SmtpEmailSender emailSender = new SmtpEmailSender();
+
+    public void placeOrder(Order order) {
+        database.save(order);
+    }
+}
+```
+
+* Cannot test without real database
+* Cannot test without email server
+* Cannot switch to PostgreSQL or SendGrid
+
+#### ✅ The Solution
+Inject dependencies via interfaces.
+![img_2.png](img_2.png)
+
+```java
+public interface OrderRepository {
+    void save(Order order);
+}
+```
+```java
+public interface EmailService {
+    void sendOrderConfirmation(Order order);
+}
+```
+```java
+public class OrderService {
+    private final OrderRepository repository;
+    private final EmailService emailService;
+
+    public OrderService(OrderRepository repository, EmailService emailService) {
+        this.repository = repository;
+        this.emailService = emailService;
+    }
+
+    public void placeOrder(Order order) {
+        repository.save(order);
+        emailService.sendOrderConfirmation(order);
+    }
+}
+```
+
+#### Easy Testing : 
+```java
+@Test
+public void shouldPlaceOrder() {
+    OrderRepository mockRepo = mock(OrderRepository.class);
+    EmailService mockEmail = mock(EmailService.class);
+    OrderService service = new OrderService(mockRepo, mockEmail);
+    
+    service.placeOrder(order);
+    
+    verify(mockRepo).save(order);
+}
+```
+
+When to apply :
+* Need multiple implementations
+* Want isolated testing
+* Infrastructure details change
+---
+
 
 
 
