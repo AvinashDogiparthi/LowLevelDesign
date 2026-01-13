@@ -65,11 +65,26 @@ This folder contains comprehensive implementations of various design patterns.
 - Each module has a dedicated README with implementation details and usage.
 
 ---
-## 🚀 How to Run
+## How to Run ?
 
-1. Clone this repository:
-   ```bash
-   git clone https://github.com/AvinashDogiparthi/LowLevelDesign.git
+Follow these steps to get the project up and running on your local machine.
+
+### 1. Prerequisites
+Ensure you have the following installed on your system:
+* **Java JDK**: Version 17 or higher (Verify with `java -version`)
+* **Maven**: Version 3.6+ (Verify with `mvn -version`)
+* **Git**: To clone the repository
+* **IDE**: IntelliJ IDEA, Eclipse, or VS Code (Recommended)
+
+### 2. Clone the Repository
+Open your terminal or command prompt and run the following commands:
+
+```bash
+# Clone the project
+git clone [https://github.com/AvinashDogiparthi/LowLevelDesign.git](https://github.com/AvinashDogiparthi/LowLevelDesign.git)
+
+# Navigate into the project directory
+cd LowLevelDesign
 
 ---
 
