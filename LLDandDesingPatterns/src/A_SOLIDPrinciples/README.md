@@ -2,7 +2,7 @@
 
 > **Core Philosophy:** SOLID principles aren’t about perfect code. They’re about keeping systems maintainable as they grow. Think of them as guardrails that make refactoring feel less like surgery and more like editing.
 
-## 📚 What You'll Learn
+## What You'll Learn
 * What each principle actually means.
 * Real code examples (Bad vs. Good).
 * When to apply them (and when not to).
@@ -10,7 +10,7 @@
 
 ---
 
-## 🚀 The 5 Principles
+## The 5 Principles
 
 ## 1. S — Single Responsibility Principle (SRP)
 **The Rule:** A class should have one, and only one, reason to change.
