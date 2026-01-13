@@ -1,83 +1,107 @@
-# Low Level Design and Design Patterns 
+# 🏛️ System Design & Design Patterns (LLD)
 
-Welcome to the **System Design and Design Patterns** repository! This repository contains a collection of system design solutions and implementation of various design patterns in Java. It serves as a comprehensive reference for developers looking to learn or refresh their understanding of key design concepts.
+![Java](https://img.shields.io/badge/Language-Java-orange?style=for-the-badge&logo=java)
+![Build](https://img.shields.io/badge/Build-Maven-blue?style=for-the-badge&logo=apachemaven)
+![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
+
+Welcome to the **System Design and Design Patterns** repository! 
+
+This repository serves as a comprehensive reference for developers mastering **Low-Level Design (LLD)**. It contains production-ready implementations of Object-Oriented Design (OOD) principles, design patterns, and full-scale system design solutions using **Java**.
+
+---
+
+## 📑 Table of Contents
+
+1. [Core Concepts](#-core-concepts)
+2. [Design Patterns](#-design-patterns)
+3. [System Design Solutions (LLD)](#-system-design-solutions-lld)
+4. [How to Run](#-how-to-run)
+5. [Contributing](#-contributing)
 
 ---
 
-##  **Table of Contents**
+## 🧠 Core Concepts
 
-### **1. Core Concepts and Principles**
-- [A_SOLIDPrinciples](https://github.com/AvinashDogiparthi/LowLevelDesign/tree/main/LLDandDesingPatterns/src/A_SOLIDPrinciples)
-- [B_DesignPatterns](https://github.com/AvinashDogiparthi/LowLevelDesign/tree/main/LLDandDesingPatterns/src/B_DesignPatterns)
+Understanding the foundational principles of software architecture.
 
-
-### 🌐 **Design Patterns Folder**
-
-This folder contains comprehensive implementations of various design patterns.
-
-### 🛠️ **Design Patterns Implemented (AA-Z):**
-- **AA_SingletonDesignPattern**: Multiple ways to implement Singleton.
-- **A_StrategyDesignPattern**: Parking spot allocation strategies.
-- **B_ObserverDesignPattern**: Parking spot availability observer.
-- **C_FactoryDesignPattern**: Object creation logic based on type.
-- **D_AbstractFactoryDesignPattern**: Abstract factory for creating families of related objects.
-- **E_ChainResponsibilityDesignPattern**: Chain of responsibility for processing requests.
-- **F_ProxyDesignPattern**: Proxy for controlling access to an object.
-- **G_NullObjectDesignPattern**: Default behavior when no object is available.
-- **H_StateDesignPattern**: Changing behavior based on state.
-- **I_CompositeDesignPattern**: Treating individual objects and compositions uniformly.
-- **J_AdapterDesignPattern**: Adapter to bridge incompatible interfaces.
-- **K_BuilderDesignPattern**: Construct complex objects step by step.
-- **L_FacadeDesignPattern**: Simplifying complex subsystems.
-- **M_BridgeDesignPattern**: Decoupling abstraction from implementation.
-- **N_FlyweightDesignPattern**: Reusing objects efficiently.
-
-### **2. Low Level Designs**
-- [C_ParkingLotDesign](https://github.com/AvinashDogiparthi/LowLevelDesign/tree/main/LLDandDesingPatterns/src/CA_ParkingLotDesign_V2) - Parking lot management system.
-- [CA_ProducerConsumerDesign](https://github.com/AvinashDogiparthi/LowLevelDesign/tree/main/LLDandDesingPatterns/src/CA_ProducerConsumerDesign) - Basic producer consumer design implemented through multithreading.
-- [D_TicTacToeLLD](https://github.com/AvinashDogiparthi/LowLevelDesign/tree/main/LLDandDesingPatterns/src/D_TicTacToeLLD) - Low-level design of the Tic Tac Toe game.
-- [E_CarRentalSystem](https://github.com/AvinashDogiparthi/LowLevelDesign/tree/main/LLDandDesingPatterns/src/E_CarRentalSystem) - Design of a car rental management system.
-- [F_SnakeAndLadder](https://github.com/AvinashDogiparthi/LowLevelDesign/tree/main/LLDandDesingPatterns/src/F_SnakeAndLadder) - Low-level design of the Snake and Ladder game.
-- [G_BookMyShow](https://github.com/AvinashDogiparthi/LowLevelDesign/tree/main/LLDandDesingPatterns/src/G_BookMyShow) - BookMyShow ticket booking system.
-- [G_BookMyShow_V2](https://github.com/AvinashDogiparthi/LowLevelDesign/tree/main/LLDandDesingPatterns/src/G_BookMyShow_V2) -  Another version of BookMyShow ticket booking system.
-- [H_VendingMachineDesign](https://github.com/AvinashDogiparthi/LowLevelDesign/tree/main/LLDandDesingPatterns/src/H_VendingMachineDesign) - Vending machine design.
-- [I_ATMDesign](https://github.com/AvinashDogiparthi/LowLevelDesign/tree/main/LLDandDesingPatterns/src/J_ATMDesign) - Low-level ATM machine design.
-- [J_FileSystemDesign](https://github.com/AvinashDogiparthi/LowLevelDesign/tree/main/LLDandDesingPatterns/src/K_FileSystemDesign) - File system design with command operations.
-- [K_SimpleArithmeticCalculator](https://github.com/AvinashDogiparthi/LowLevelDesign/tree/main/LLDandDesingPatterns/src/I_SimpleArithmeticCalculator) - Calculator design with basic arithmetic operations.
-- [LoggerDesign](https://github.com/AvinashDogiparthi/LowLevelDesign/tree/main/LLDandDesingPatterns/src/LoggerDesign) - Logger with the Facade pattern.
-- [M_UberDesign](https://github.com/AvinashDogiparthi/LowLevelDesign/tree/main/LLDandDesingPatterns/src/M_UberDesign) - Online cab booking system (Uber/Rapido/Ola).
-- [N_ZeptoStoreDesign](https://github.com/AvinashDogiparthi/LowLevelDesign/tree/main/LLDandDesingPatterns/src/N_ZeptoStoreDesign) - Zepto store with ordering strategies.
-- [O_CultFitDesign](https://github.com/AvinashDogiparthi/LowLevelDesign/tree/main/LLDandDesingPatterns/src/O_CultFitDesign) - CultFit fitness management system.
-- [P_TwitterDesign](https://github.com/AvinashDogiparthi/LowLevelDesign/tree/main/LLDandDesingPatterns/src/P_TwitterDesign) - Twitter-like social media platform.
-- [Q_SwiggyDesign](https://github.com/AvinashDogiparthi/LowLevelDesign/tree/main/LLDandDesingPatterns/src/Q_SwiggyDesign) - Swiggy food delivery system with coupon discounts.
-- [R_IssueResolvingSystem](https://github.com/AvinashDogiparthi/LowLevelDesign/tree/main/LLDandDesingPatterns/src/R_IssueResolvingSystem) - Issue resolving system to create issue's, letting available agents to pick tickets and tracking issue's
-- [S_TextEditorDesign](https://github.com/AvinashDogiparthi/LowLevelDesign/tree/main/LLDandDesingPatterns/src/S_TextEditorDesign) - Any text document has characters arranged in rows and columns. Also each character can have its own style parameters like font name, font size, bold, italic etc. 
-- [T_MeetingScheduler](https://github.com/AvinashDogiparthi/LowLevelDesign/tree/main/LLDandDesingPatterns/src/T_MeetingScheduler) - Implemented a similar microsoft teams scheduler logic.
-- [U_FlightBookingManagement](https://github.com/AvinashDogiparthi/LowLevelDesign/tree/main/LLDandDesingPatterns/src/U_FlightBookingManagement) - LLD of flight booking management
-- [V_HotelManagementSystem](https://github.com/AvinashDogiparthi/LowLevelDesign/tree/main/LLDandDesingPatterns/src/V_HotelManagementSystem) - LLD of hotel management system
-- [Y_Utils](https://github.com/AvinashDogiparthi/LowLevelDesign/tree/main/LLDandDesingPatterns/src/Y_Utils) - Utility methods for design implementations.
-- [Z_Exception](https://github.com/AvinashDogiparthi/LowLevelDesign/tree/main/LLDandDesingPatterns/src/Z_Exception) - Exception handling utilities.
+| Module | Description |
+| :--- | :--- |
+| **[A_SOLIDPrinciples](LLDandDesingPatterns/src/A_SOLIDPrinciples)** | Implementation of S.O.L.I.D principles (Single Responsibility, Open/Closed, Liskov Substitution, Interface Segregation, Dependency Inversion). |
+| **[Y_Utils](LLDandDesingPatterns/src/Y_Utils)** | Common utility methods and helper classes used across various designs. |
+| **[Z_Exception](LLDandDesingPatterns/src/Z_Exception)** | Custom exception handling framework and utilities. |
 
 ---
-## How to Run ?
+
+## 🎨 Design Patterns
+
+Comprehensive implementations of Creational, Structural, and Behavioral patterns.
+
+| Code | Pattern Name | Description |
+| :--- | :--- | :--- |
+| **AA** | [Singleton](LLDandDesingPatterns/src/AA_SingletonDesignPattern) | Thread-safe, Lazy, Eager, and Enum implementations. |
+| **A** | [Strategy](LLDandDesingPatterns/src/A_StrategyDesignPattern) | Interchangeable algorithms (e.g., Parking Spot allocation). |
+| **B** | [Observer](LLDandDesingPatterns/src/B_ObserverDesignPattern) | Publish-Subscribe mechanism (e.g., Availability notifications). |
+| **C** | [Factory](LLDandDesingPatterns/src/C_FactoryDesignPattern) | Interface-based object creation logic. |
+| **D** | [Abstract Factory](LLDandDesingPatterns/src/D_AbstractFactoryDesignPattern) | Creating families of related or dependent objects. |
+| **E** | [Chain of Responsibility](LLDandDesingPatterns/src/E_ChainResponsibilityDesignPattern) | Passing requests along a chain of handlers. |
+| **F** | [Proxy](LLDandDesingPatterns/src/F_ProxyDesignPattern) | Controlling access to an object (Lazy loading, Protection). |
+| **G** | [Null Object](LLDandDesingPatterns/src/G_NullObjectDesignPattern) | Handling null references gracefully with default behavior. |
+| **H** | [State](LLDandDesingPatterns/src/H_StateDesignPattern) | Altering object behavior when its internal state changes. |
+| **I** | [Composite](LLDandDesingPatterns/src/I_CompositeDesignPattern) | Tree structures of objects (Part-Whole hierarchy). |
+| **J** | [Adapter](LLDandDesingPatterns/src/J_AdapterDesignPattern) | Bridging incompatible interfaces to work together. |
+| **K** | [Builder](LLDandDesingPatterns/src/K_BuilderDesignPattern) | Step-by-step construction of complex objects. |
+| **L** | [Facade](LLDandDesingPatterns/src/L_FacadeDesignPattern) | Simplified interface to a complex subsystem. |
+| **M** | [Bridge](LLDandDesingPatterns/src/M_BridgeDesignPattern) | Decoupling abstraction from its implementation. |
+| **N** | [Flyweight](LLDandDesingPatterns/src/N_FlyweightDesignPattern) | Efficient sharing of objects to reduce memory load. |
+
+---
+
+## 🏗️ System Design Solutions (LLD)
+
+Real-world low-level design problems often asked in technical interviews.
+
+| Code | System / Problem | Key Concepts / Description |
+| :--- | :--- | :--- |
+| **C** | [Parking Lot](LLDandDesingPatterns/src/CA_ParkingLotDesign_V2) | Multi-floor parking management, Ticket generation, Spot allocation. |
+| **CA** | [Producer Consumer](LLDandDesingPatterns/src/CA_ProducerConsumerDesign) | Multi-threading, Blocking Queues, Concurrency control. |
+| **D** | [Tic Tac Toe](LLDandDesingPatterns/src/D_TicTacToeLLD) | Game loop, Board management, Player strategies. |
+| **E** | [Car Rental System](LLDandDesingPatterns/src/E_CarRentalSystem) | Inventory management, Booking reservations, Store locations. |
+| **F** | [Snake & Ladder](LLDandDesingPatterns/src/F_SnakeAndLadder) | Game entities (Board, Dice, Player), Movement logic. |
+| **G** | [BookMyShow](LLDandDesingPatterns/src/G_BookMyShow_V2) | Movie ticketing, Theater seating, Concurrency handling for booking. |
+| **H** | [Vending Machine](LLDandDesingPatterns/src/H_VendingMachineDesign) | State Pattern implementation (Idle, Selection, Dispense). |
+| **I** | [ATM Design](LLDandDesingPatterns/src/J_ATMDesign) | State Pattern, Transaction handling, Cash dispensing chain. |
+| **J** | [File System](LLDandDesingPatterns/src/K_FileSystemDesign) | Composite Pattern, Command Pattern for file operations. |
+| **K** | [Calculator](LLDandDesingPatterns/src/I_SimpleArithmeticCalculator) | Basic arithmetic operations and expression evaluation. |
+| **--** | [Logger](LLDandDesingPatterns/src/LoggerDesign) | Chain of Responsibility, Log levels, Appenders. |
+| **M** | [Uber/Ride Sharing](LLDandDesingPatterns/src/M_UberDesign) | Driver matching strategies, Trip management, Pricing. |
+| **N** | [Zepto/Quick Commerce](LLDandDesingPatterns/src/N_ZeptoStoreDesign) | Inventory, Order management, Delivery assignment strategies. |
+| **O** | [CultFit/Gym](LLDandDesingPatterns/src/O_CultFitDesign) | Workout scheduling, Slot booking, Center management. |
+| **P** | [Twitter/Social](LLDandDesingPatterns/src/P_TwitterDesign) | User graph, News feed generation, Posting, Following. |
+| **Q** | [Swiggy/Food Delivery](LLDandDesingPatterns/src/Q_SwiggyDesign) | Restaurant menu, Order processing, Coupons & Discounts. |
+| **R** | [Issue Resolver](LLDandDesingPatterns/src/R_IssueResolvingSystem) | Ticketing system, Agent assignment, Strategy pattern. |
+| **S** | [Text Editor](LLDandDesingPatterns/src/S_TextEditorDesign) | Flyweight pattern for characters, Formatting, Undo/Redo stack. |
+| **T** | [Meeting Scheduler](LLDandDesingPatterns/src/T_MeetingScheduler) | Calendar slot availability, Invite management (Microsoft Teams style). |
+| **U** | [Flight Booking](LLDandDesingPatterns/src/U_FlightBookingManagement) | Airline inventory, Seat selection, Booking status, Search. |
+| **V** | [Hotel Management](LLDandDesingPatterns/src/V_HotelManagementSystem) | Room booking, Guest management, Service allocation. |
+
+---
+
+## 🚀 How to Run
 
 Follow these steps to get the project up and running on your local machine.
 
-#### 1. Prerequisites
-Ensure you have the following installed on your system:
-* **Java JDK**: Version 17 or higher (Verify with `java -version`)
+### 1. Prerequisites
+Ensure you have the following installed:
+* **Java JDK**: Version 17+ (Verify with `java -version`)
 * **Maven**: Version 3.6+ (Verify with `mvn -version`)
-* **Git**: To clone the repository
-* **IDE**: IntelliJ IDEA, Eclipse, or VS Code (Recommended)
+* **IDE**: IntelliJ IDEA (Recommended), Eclipse, or VS Code.
 
-#### 2. Clone the Repository
-Open your terminal or command prompt and run the following commands:
-
+### 2. Setup
 ```bash
-# Clone the project
+# Clone the repository
 git clone [https://github.com/AvinashDogiparthi/LowLevelDesign.git](https://github.com/AvinashDogiparthi/LowLevelDesign.git)
 
-# Navigate into the project directory
+# Navigate to project directory
 cd LowLevelDesign
 ```
 
