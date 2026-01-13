@@ -1,4 +1,4 @@
-# 🏛️ System Design & Design Patterns (LLD)
+# Low Level Design & Design Patterns
 
 ![Java](https://img.shields.io/badge/Language-Java-orange?style=for-the-badge&logo=java)
 ![Build](https://img.shields.io/badge/Build-Maven-blue?style=for-the-badge&logo=apachemaven)
@@ -27,8 +27,6 @@ Understanding the foundational principles of software architecture.
 | Module | Description |
 | :--- | :--- |
 | **[A_SOLIDPrinciples](LLDandDesingPatterns/src/A_SOLIDPrinciples)** | Implementation of S.O.L.I.D principles (Single Responsibility, Open/Closed, Liskov Substitution, Interface Segregation, Dependency Inversion). |
-| **[Y_Utils](LLDandDesingPatterns/src/Y_Utils)** | Common utility methods and helper classes used across various designs. |
-| **[Z_Exception](LLDandDesingPatterns/src/Z_Exception)** | Custom exception handling framework and utilities. |
 
 ---
 
