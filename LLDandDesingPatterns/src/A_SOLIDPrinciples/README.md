@@ -124,30 +124,64 @@ When to apply :
 ---
 
 ## 3. L — Liskov Substitution Principle (LSP)
-**The Rule:** Subtypes must be substitutable for their base types. If code expects a Parent, giving it a Child shouldn't break anything.
+**The Rule:** If you replace a parent object with a child object, your application shouldn't break or behave weirdly.
 
-#### ❌ The Mistake
-A Square is not a Rectangle in programming because changing width doesn't automatically change height in a Rectangle, but it must in a Square.
-
-```java
-Rectangle rect = new Square();
-rect.setWidth(5);
-rect.setHeight(4);
-// FAILS! Area is 16 (4*4), expected 20.
-assert rect.getArea() == 20;
-```
-
-#### ✅ The Solution
-Use a common interface (Shape) rather than inheritance if behavior differs.
+#### ❌ The Problem
+You create a Penguin class. Penguins are birds, so you extend Bird. But wait—penguins can't fly.
 
 ```java
-public interface Shape {
-    double area();
+// 1. The Standard Class
+class Bird {
+    public void fly() {
+        System.out.println("I am flying high!");
+    }
 }
 
-public class Rectangle implements Shape {  }
-public class Square implements Shape {  }
+// 2. The Child Class
+class Penguin extends Bird {
+    @Override
+    public void fly() {
+        // BREAKS LSP!
+        // The parent said "I can fly", but the child says "Error!"
+        throw new UnsupportedOperationException("Help! I cannot fly!");
+    }
+}
+
+// 3. The Code that crashes
+public void makeBirdFly(Bird bird) {
+    bird.fly();
+}
+
+// If I pass a Sparrow, it works.
+// If I pass a Penguin, THE APP CRASHES.
 ```
+
+**Why is this bad?** The function makeBirdFly trusts that if it gets a Bird, it can call .fly(). 
+The Penguin betrayed that trust. You can no longer swap (substitute) a Penguin in place of a Bird safely.
+
+#### ✅ The Solution
+Don't force the Penguin to lie about flying. Change the hierarchy so the "Flying" contract is separate.
+
+![img_4.png](img_4.png)
+
+```java
+// 1. Base Class (Things all birds do)
+class Bird {
+    public void eat() { }
+}
+
+// 2. Separate Interface for Flying
+class FlyingBird extends Bird {
+    public void fly() {  }
+}
+
+class Penguin extends Bird {
+    // Penguin is just a Bird, it is NOT a FlyingBird.
+    // It doesn't have the fly() method at all.
+}
+```
+
+Now, your code explicitly asks for a FlyingBird if it needs to fly. You can never accidentally pass a Penguin to a flight simulator.
 
 ---
 
@@ -157,6 +191,15 @@ public class Square implements Shape {  }
 #### ❌ The Problem
 A Robot is forced to implement eat() because it implements Worker.
 
+```java
+public interface Worker {
+    void work();
+    void eat();
+    void sleep();
+    void attendMeeting();
+    void submitTimesheet();
+}
+```
 ```java
 public interface Worker {
     void work();
@@ -172,12 +215,22 @@ public class RobotWorker implements Worker {
 #### ✅ The Solution
 Split interfaces based on capabilities.
 
+![img_3.png](img_3.png)
+
 ```java
 public interface Workable { void work(); }
 public interface Feedable { void eat(); }
+public interface Restable { void sleep(); }
+public interface Communicable { void attendMeeting(); }
+```
 
+```java
+public class HumanWorker implements Workable, Feedable, Restable, Communicable {
+    // Implements all
+}
 public class RobotWorker implements Workable {
-    public void work() {  }
+    public void work() { /* ... */ }
+    // Clean! No unused methods
 }
 ```
 
@@ -185,6 +238,8 @@ When to apply :
 * Implementations are throwing UnsupportedOperationException.
 * Interfaces have >8 methods.
 * Different clients use distinct subsets of the interface.
+* ❌ Don’t over-split if all clients use all methods
+
 
 ---
 
