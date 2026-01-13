@@ -37,25 +37,26 @@ This folder contains comprehensive implementations of various design patterns.
 - [CA_ProducerConsumerDesign](https://github.com/AvinashDogiparthi/LowLevelDesign/tree/main/LLDandDesingPatterns/src/CA_ProducerConsumerDesign) - Basic producer consumer design implemented through multithreading.
 - [D_TicTacToeLLD](https://github.com/AvinashDogiparthi/LowLevelDesign/tree/main/LLDandDesingPatterns/src/D_TicTacToeLLD) - Low-level design of the Tic Tac Toe game.
 - [E_CarRentalSystem](https://github.com/AvinashDogiparthi/LowLevelDesign/tree/main/LLDandDesingPatterns/src/E_CarRentalSystem) - Design of a car rental management system.
-- [F_SnakeAndLadder](#f_snakeandladder) - Low-level design of the Snake and Ladder game.
-- [G_BookMyShow](#g_bookmyshow) - BookMyShow ticket booking system.
-- [H_VendingMachineDesign](#h_vendingmachinedesign) - Vending machine design.
-- [I_ATMDesign](#i_atmdesign) - Low-level ATM machine design.
-- [J_FileSystemDesign](#j_filesystemdesign) - File system design with command operations.
-- [K_SimpleArithmeticCalculator](#k_simplearithmeticcalculator) - Calculator design with basic arithmetic operations.
-- [LoggerDesign](#loggerdesign) - Logger with the Facade pattern.
-- [M_UberDesign](#m_uberdesign) - Online cab booking system (Uber/Rapido/Ola).
-- [N_ZeptoStoreDesign](#n_zeptostoredesign) - Zepto store with ordering strategies.
-- [O_CultFitDesign](#o_cultfitdesign) - CultFit fitness management system.
-- [P_TwitterDesign](#p_twitterdesign) - Twitter-like social media platform.
-- [Q_SwiggyDesign](#q_swiggydesign) - Swiggy food delivery system with coupon discounts.
-- [R_IssueResolvingSystem](#r_issueresolvingsystem) - Issue resolving system to create issue's, letting available agents to pick tickets and tracking issue's
-- [S_TextEditorDesign](#s_texteditordesign) - Any text document has characters arranged in rows and columns. Also each character can have its own style parameters like font name, font size, bold, italic etc. 
-- [T_MeetingScheduler](#t_meetingscheduler) - Implemented a similar microsoft teams scheduler logic.
-- [U_FlightBookingManagement](#u_flightbookingmanagement) - LLD of flight booking management
-- [V_HotelManagementSystem](#v_hotelmanagementsytem) - LLD of hotel management system
-- [Y_Utils](#y_utils) - Utility methods for design implementations.
-- [Z_Exception](#z_exception) - Exception handling utilities.
+- [F_SnakeAndLadder](https://github.com/AvinashDogiparthi/LowLevelDesign/tree/main/LLDandDesingPatterns/src/F_SnakeAndLadder) - Low-level design of the Snake and Ladder game.
+- [G_BookMyShow](https://github.com/AvinashDogiparthi/LowLevelDesign/tree/main/LLDandDesingPatterns/src/G_BookMyShow) - BookMyShow ticket booking system.
+- [G_BookMyShow_V2](https://github.com/AvinashDogiparthi/LowLevelDesign/tree/main/LLDandDesingPatterns/src/G_BookMyShow_V2) -  Another version of BookMyShow ticket booking system.
+- [H_VendingMachineDesign](https://github.com/AvinashDogiparthi/LowLevelDesign/tree/main/LLDandDesingPatterns/src/H_VendingMachineDesign) - Vending machine design.
+- [I_ATMDesign](https://github.com/AvinashDogiparthi/LowLevelDesign/tree/main/LLDandDesingPatterns/src/J_ATMDesign) - Low-level ATM machine design.
+- [J_FileSystemDesign](https://github.com/AvinashDogiparthi/LowLevelDesign/tree/main/LLDandDesingPatterns/src/K_FileSystemDesign) - File system design with command operations.
+- [K_SimpleArithmeticCalculator](https://github.com/AvinashDogiparthi/LowLevelDesign/tree/main/LLDandDesingPatterns/src/I_SimpleArithmeticCalculator) - Calculator design with basic arithmetic operations.
+- [LoggerDesign](https://github.com/AvinashDogiparthi/LowLevelDesign/tree/main/LLDandDesingPatterns/src/LoggerDesign) - Logger with the Facade pattern.
+- [M_UberDesign](https://github.com/AvinashDogiparthi/LowLevelDesign/tree/main/LLDandDesingPatterns/src/M_UberDesign) - Online cab booking system (Uber/Rapido/Ola).
+- [N_ZeptoStoreDesign](https://github.com/AvinashDogiparthi/LowLevelDesign/tree/main/LLDandDesingPatterns/src/N_ZeptoStoreDesign) - Zepto store with ordering strategies.
+- [O_CultFitDesign](https://github.com/AvinashDogiparthi/LowLevelDesign/tree/main/LLDandDesingPatterns/src/O_CultFitDesign) - CultFit fitness management system.
+- [P_TwitterDesign](https://github.com/AvinashDogiparthi/LowLevelDesign/tree/main/LLDandDesingPatterns/src/P_TwitterDesign) - Twitter-like social media platform.
+- [Q_SwiggyDesign](https://github.com/AvinashDogiparthi/LowLevelDesign/tree/main/LLDandDesingPatterns/src/Q_SwiggyDesign) - Swiggy food delivery system with coupon discounts.
+- [R_IssueResolvingSystem](https://github.com/AvinashDogiparthi/LowLevelDesign/tree/main/LLDandDesingPatterns/src/R_IssueResolvingSystem) - Issue resolving system to create issue's, letting available agents to pick tickets and tracking issue's
+- [S_TextEditorDesign](https://github.com/AvinashDogiparthi/LowLevelDesign/tree/main/LLDandDesingPatterns/src/S_TextEditorDesign) - Any text document has characters arranged in rows and columns. Also each character can have its own style parameters like font name, font size, bold, italic etc. 
+- [T_MeetingScheduler](https://github.com/AvinashDogiparthi/LowLevelDesign/tree/main/LLDandDesingPatterns/src/T_MeetingScheduler) - Implemented a similar microsoft teams scheduler logic.
+- [U_FlightBookingManagement](https://github.com/AvinashDogiparthi/LowLevelDesign/tree/main/LLDandDesingPatterns/src/U_FlightBookingManagement) - LLD of flight booking management
+- [V_HotelManagementSystem](https://github.com/AvinashDogiparthi/LowLevelDesign/tree/main/LLDandDesingPatterns/src/V_HotelManagementSystem) - LLD of hotel management system
+- [Y_Utils](https://github.com/AvinashDogiparthi/LowLevelDesign/tree/main/LLDandDesingPatterns/src/Y_Utils) - Utility methods for design implementations.
+- [Z_Exception](https://github.com/AvinashDogiparthi/LowLevelDesign/tree/main/LLDandDesingPatterns/src/Z_Exception) - Exception handling utilities.
 
 ---
 
