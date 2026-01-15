@@ -1,4 +1,4 @@
-# Low Level Design & Design Patterns
+# Low Level Designs & Design Patterns
 
 ![Java](https://img.shields.io/badge/Language-Java-orange?style=for-the-badge&logo=java)
 ![Build](https://img.shields.io/badge/Build-Maven-blue?style=for-the-badge&logo=apachemaven)
