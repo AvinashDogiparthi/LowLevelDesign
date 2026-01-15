@@ -4,7 +4,7 @@
 ![Build](https://img.shields.io/badge/Build-Maven-blue?style=for-the-badge&logo=apachemaven)
 ![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 
-Welcome to the **System Design and Design Patterns** repository! 
+Welcome to the **Low Level Designs and Design Patterns** repository! 
 
 This repository serves as a comprehensive reference for developers mastering **Low-Level Design (LLD)**. It contains production-ready implementations of Object-Oriented Design (OOD) principles, design patterns, and full-scale system design solutions using **Java**.
 
@@ -91,7 +91,6 @@ Follow these steps to get the project up and running on your local machine.
 ### 1. Prerequisites
 Ensure you have the following installed:
 * **Java JDK**: Version 17+ (Verify with `java -version`)
-* **Maven**: Version 3.6+ (Verify with `mvn -version`)
 * **IDE**: IntelliJ IDEA (Recommended), Eclipse, or VS Code.
 
 ### 2. Setup
